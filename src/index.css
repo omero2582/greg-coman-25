@@ -31,3 +31,8 @@ a:hover {
 button {
   cursor: pointer;
 }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Cronos Pro Bold Display', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
