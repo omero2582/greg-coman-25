@@ -1,8 +1,8 @@
-import LogoNav from "@/assets/Logo_nav.svg";
 
 import React, { useState, useEffect } from "react";
 import { Instagram, Linkedin, Facebook, Mail, Twitter } from "lucide-react";
 import { cn } from "@/lib/utils";
+import LogoNav from "@/assets/Logo_nav.svg";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
