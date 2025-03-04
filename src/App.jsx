@@ -4,6 +4,7 @@ import Family from './pages/Family/Family';
 import Home from './pages/Home/Home';
 import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
+import Headshots from './pages/Headshots/Headshots';
 
 export default function App() {
 
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/family" element={<Family />} />
+        <Route path="/headshots" element={<Headshots />} />
       </Routes>
       {/* <Footer /> */}
       </div>
