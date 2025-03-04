@@ -52,9 +52,11 @@ Features:
 
   {
     name: 'Outdoor',
-    caption: 'With nice scenery',
-    location: '',
-    description: gregLocation,
+    caption: 'With great scenery',
+    location:  gregLocation,
+    price:'$300',
+    duration: '2hr',
+    description:'',
     features:''
   },
 
@@ -62,6 +64,8 @@ Features:
     name: 'Environmental',
     caption: 'In your desired location',
     location: gregLocation,
+    price:'$400',
+    duration: '3hr',
     description: '', 
     features:''
   },
