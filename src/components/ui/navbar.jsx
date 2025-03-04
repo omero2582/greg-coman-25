@@ -24,10 +24,10 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4",
         scrolled
-          ? "py-2 bg-white/90 backdrop-blur-sm shadow-sm"
-          : "py-4 bg-white"
+          ? "py-4 bg-[#FFFCF9]/90 backdrop-blur-sm shadow-sm"
+          : "py-4 bg-[#FFFCF9]"
       )}
     >
       <div className="max-w-dvw mx-auto px-4 sm:px-6 lg:px-8 border-2 border-[#929292] rounded-xl py-4">
@@ -40,36 +40,36 @@ const Navbar = () => {
           <div className="flex items-center gap-8">
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <div
+              <a
                 href="#home"
                 className="text-[#00A79D] hover:text-[#03746D] cursor-pointer transition-colors duration-200 font-medium text-sm"
               >
                 Home
-              </div>
-              <div
+              </a>
+              <a
                 href="#about"
                 className="text-[#00A79D] hover:text-[#03746D] cursor-pointer transition-colors duration-200 font-medium text-sm"
               >
                 About Greg
-              </div>
-              <div
+              </a>
+              <a
                 href="#services"
                 className="text-[#00A79D] hover:text-[#03746D] cursor-pointer transition-colors duration-200 font-medium text-sm"
               >
                 Services
-              </div>
-              <div
+              </a>
+              <a
                 href="#fine-art"
                 className="text-[#00A79D] hover:text-[#03746D] cursor-pointer transition-colors duration-200 font-medium text-sm"
               >
                 Fine Art
-              </div>
-              <div
+              </a>
+              <a
                 href="#contact"
                 className="text-[#00A79D] hover:text-[#03746D] cursor-pointer transition-colors duration-200 font-medium text-sm"
               >
                 Contact
-              </div>
+              </a>
             </div>
 
             {/* Book Now Button */}
@@ -81,7 +81,7 @@ const Navbar = () => {
           </div>
           {/* Social Media Icons */}
           <div className="hidden md:flex items-center space-x-4 ml-6">
-            <div
+            <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -89,8 +89,8 @@ const Navbar = () => {
               className="text-[#0F6F84] transition-colors duration-200 cursor-pointer hover:text-[#03746D]"
             >
               <Instagram size={20} />
-            </div>
-            <div
+            </a>
+            <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -98,8 +98,8 @@ const Navbar = () => {
               className="text-[#0F6F84] transition-colors duration-200 cursor-pointer hover:text-[#03746D]"
             >
               <Linkedin size={20} />
-            </div>
-            <div
+            </a>
+            <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -107,8 +107,8 @@ const Navbar = () => {
               className="text-[#0F6F84] transition-colors duration-200 cursor-pointer hover:text-[#03746D]"
             >
               <Facebook size={20} />
-            </div>
-            <div
+            </a>
+            <a
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -116,14 +116,14 @@ const Navbar = () => {
               className="text-[#0F6F84] transition-colors duration-200 cursor-pointer hover:text-[#03746D]"
             >
               <Twitter size={20} />
-            </div>
-            <div
+            </a>
+            <a
               href="mailto:contact@example.com"
               aria-label="Email"
               className="text-[#0F6F84] transition-colors duration-200 cursor-pointer hover:text-[#03746D]"
             >
               <Mail size={20} />
-            </div>
+            </a>
           </div>
 
           {/* Mobile menu button */}
