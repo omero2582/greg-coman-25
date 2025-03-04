@@ -5,6 +5,7 @@ import Home from './pages/Home/Home';
 import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
 import Headshots from './pages/Headshots/Headshots';
+import Testimonials from './pages/Testimonials/Testimonials';
 
 export default function App() {
 
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/family" element={<Family />} />
         <Route path="/headshots" element={<Headshots />} />
+        <Route path="/testimonials" element={<Testimonials/>} />
       </Routes>
       {/* <Footer /> */}
       </div>
