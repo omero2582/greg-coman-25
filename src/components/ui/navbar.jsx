@@ -22,15 +22,15 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4",
-        scrolled
-          ? "py-4 bg-[#FFFCF9]/90 backdrop-blur-sm shadow-sm"
-          : "py-4 bg-[#FFFCF9]"
-      )}
-    >
-      <div className="max-w-dvw mx-auto px-4 sm:px-6 lg:px-8 border-2 border-[#929292] rounded-xl py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out p-4">
+      <div
+        className={cn(
+          "max-w-dvw mx-auto px-4 sm:px-6 lg:px-8 border-2 border-[#929292] rounded-xl py-4",
+          scrolled
+            ? "bg-[#FFFCF9]/60 backdrop-blur-3xl shadow-sm"
+            : "bg-[#FFFCF9]/80"
+        )}
+      >
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
