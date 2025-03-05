@@ -17,7 +17,7 @@ const PricingPage = () => {
       <section className="flex flex-col md:flex-row items-stretch gap-4">
         {/* Slideshow Area */}
         <div className="flex-1 bg-gray-200 flex items-center justify-center p-4">
-          <span>Slide Show of Photos Maybe</span>
+          <span>Picture</span>
         </div>
         {/* Package Details */}
         <div className="flex-1 bg-white p-6 shadow-md flex flex-col justify-between">
@@ -35,7 +35,7 @@ const PricingPage = () => {
       {/* EXAMPLE: Business Profile Portrait */}
       <section className="flex flex-col md:flex-row-reverse items-stretch gap-4">
         <div className="flex-1 bg-gray-200 flex items-center justify-center p-4">
-          <span>Slide Show of Photos Maybe</span>
+          <span>Picture</span>
         </div>
         <div className="flex-1 bg-white p-6 shadow-md flex flex-col justify-between">
           <h3 className="text-xl font-medium mb-4">Business Profile Portrait</h3>
@@ -53,7 +53,7 @@ const PricingPage = () => {
       <section className="flex flex-col md:flex-row items-stretch gap-4">
         {/* Slideshow Area */}
         <div className="flex-1 bg-gray-200 flex items-center justify-center p-4">
-          <span>Slide Show of Photos Maybe</span>
+          <span>Picture</span>
         </div>
         {/* Package Details */}
         <div className="flex-1 bg-white p-6 shadow-md flex flex-col justify-between">
@@ -72,7 +72,7 @@ const PricingPage = () => {
       <section className="flex flex-col md:flex-row-reverse items-stretch gap-4">
         {/* Slideshow Area */}
         <div className="flex-1 bg-gray-200 flex items-center justify-center p-4">
-          <span>Slide Show of Photos Maybe</span>
+          <span>Picture</span>
         </div>
         {/* Package Details */}
         <div className="flex-1 bg-white p-6 shadow-md flex flex-col justify-between">
