@@ -14,7 +14,7 @@ const PricingPage = () => {
       {/* Engagement Portrait Session */}
       <div className="flex flex-col md:flex-row items-stretch mb-8">
         <div className="flex-1 bg-gray-200 flex items-center justify-center p-4">
-          <span>Slide Show of Photos Maybe</span>
+          <span>Picture</span>
         </div>
         <div className="flex-1 bg-white p-6 shadow-md flex flex-col justify-between">
           <h3 className="text-xl font-medium mb-4">Engagement Portrait Session</h3>
@@ -31,7 +31,7 @@ const PricingPage = () => {
       {/* Family Portrait Session Outdoor */}
       <div className="flex flex-col md:flex-row-reverse items-stretch mb-8">
         <div className="flex-1 bg-gray-200 flex items-center justify-center p-4">
-          <span>Slide Show of Photos Maybe</span>
+          <span>Picture</span>
         </div>
         <div className="flex-1 bg-white p-6 shadow-md flex flex-col justify-between">
           <h3 className="text-xl font-medium mb-4">Family Portrait Session Outdoor</h3>
@@ -48,7 +48,7 @@ const PricingPage = () => {
       {/* Business Profile Portrait */}
       <div className="flex flex-col md:flex-row items-stretch mb-8">
         <div className="flex-1 bg-gray-200 flex items-center justify-center p-4">
-          <span>Slide Show of Photos Maybe</span>
+          <span>Picture</span>
         </div>
         <div className="flex-1 bg-white p-6 shadow-md flex flex-col justify-between">
           <h3 className="text-xl font-medium mb-4">Business Profile Portrait</h3>
@@ -65,7 +65,7 @@ const PricingPage = () => {
       {/* Couple Portrait Session */}
       <div className="flex flex-col md:flex-row-reverse items-stretch mb-8">
         <div className="flex-1 bg-gray-200 flex items-center justify-center p-4">
-          <span>Slide Show of Photos Maybe</span>
+          <span>Picture</span>
         </div>
         <div className="flex-1 bg-white p-6 shadow-md flex flex-col justify-between">
           <h3 className="text-xl font-medium mb-4">Couple Portrait Session</h3>
