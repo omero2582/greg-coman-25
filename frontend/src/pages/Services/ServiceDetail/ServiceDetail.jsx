@@ -25,13 +25,13 @@ export default function ServiceDetail() {
     return <div>Service Not Found</div>
   }
 
-  const { title, caption, description, descriptionImage, images, slug, packages } = data
+  const { name, caption, description, descriptionImage, images, slug, packages } = data
 
   return (
       <div className='max-w-[1440px] mx-auto w-full grid bg-[#FFFCF9] justify-center'>
         {/**leading-[72px] */}
         <div className='mx-auto mt-4 mb-[12px] grid justify-items-center'>
-          <h1 className='text-[52px] leading-[1] uppercase'>{title}</h1>
+          <h1 className='text-[52px] leading-[1] uppercase'>{name}</h1>
           <p className='text-[1.15rem]'>{caption}</p>
         </div>
         <MyCarousel imagesRaw={images}/>
@@ -107,29 +107,29 @@ import { client } from '@/sanity-cms/sanityClient';
 
 
 function Packages({packagesRaw}){
-  const [selectedTab, setSelectedTab] = useState(packagesRaw[0].title);
+  const [selectedTab, setSelectedTab] = useState(packagesRaw[0].name);
   // const gregLocation = '10737 Sixth Line, Georgetown, ON, Canada'
 
   // const selectedPackage = packages.find(p => p.name === selectedTab)
-  const selectedPackage = packagesRaw.find(p => p.title === selectedTab)
+  const selectedPackage = packagesRaw.find(p => p.name === selectedTab)
 
   return (
     <div className='max-w-[880px] w-full justify-self-center '>
       <div>
         {packagesRaw.map(p => (
         <button 
-          key={p.title}
-          onClick={() => setSelectedTab(p.title)}
+          key={p.name}
+          onClick={() => setSelectedTab(p.name)}
           className='text-[1.2rem] px-4 py-1 bg-sky-200 hover:bg-sky-300'
         >
-          {p.title}
+          {p.name}
         </button>
         ))}
       </div>
       <div className='text-[1.15rem] '>
         <div className='my-[10px] leading-[1.4]'>
           <h2 className='font-bold text-[1.35rem]'>
-            {selectedPackage.title}
+            {selectedPackage.name}
           </h2>
           <h3 className='text-[1.03rem]'>{selectedPackage.caption}</h3>
           <p className='text-[1.1rem]'>

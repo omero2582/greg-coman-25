@@ -19,7 +19,7 @@ export default function Services() {
       <h1>Services</h1>
       <div>{data.map(s => (
         <Link to={`/services/${s.slug.current}`}>
-          {s.title}
+          {s.name}
         </Link>
       ))}</div>
     </div>

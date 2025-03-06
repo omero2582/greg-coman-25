@@ -5,16 +5,16 @@ export default {
   title: 'Service',
   type: 'document',
   fields: [
-    { name: 'title', title: 'Title', type: 'string', },
+    { name: 'name', title: 'Name', type: 'string', },
     {
       name: 'slug',
       type: 'slug',
       description: 'URL string',
-      options: {source: 'title'},
+      options: {source: 'name'},
       validation: (rule) => rule
         .required()
         .error(`Required to generate a page on the website`),
-      hidden: ({document}) => !document?.title,
+      hidden: ({document}) => !document?.name,
     },
     { name: 'caption', title: 'Caption', type: 'string', },
     { 
@@ -70,7 +70,7 @@ export default {
       {
         type: 'object',
         fields: [
-          { name: 'title', title: 'Title', type: 'string' },
+          { name: 'name', title: 'Name', type: 'string' },
           { name: 'caption', title: 'caption', type: 'string' },
           { name: 'price', title: 'Price', type: 'string' },
           { name: 'duration', title: 'Duration', type: 'string' },
@@ -100,7 +100,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'name',
       subtitle: "caption",
       media: "mainImage",
     },
