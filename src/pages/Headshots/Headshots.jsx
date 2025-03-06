@@ -40,7 +40,7 @@ function MyCarousel(){
       ]}>
       <CarouselContent className='-ml-2'>
         {images.map((img, i) => (
-          <CarouselItem className="pl-2 flex-none">
+          <CarouselItem  key={i} className="pl-2 flex-none">
            {/* <CarouselItem className="basis-1/2 sm:basis-1/3 md:basis-1/4"> */}
           {/* <div className="">
             <AspectRatio ratio={2 / 3}> */}
