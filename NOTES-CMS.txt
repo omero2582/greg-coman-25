@@ -1,0 +1,39 @@
+help - https://www.sanity.io/learn/course/day-one-with-sanity-studio/prerequisites
+our data - https://gregcoman.sanity.studio/
+
+Important:
+sanity-studio-cms is a React App provided by sanity
+
+1. To run:
+- 'npm run dev' to view your current schema in localhost
+- After you make changes, be sure to 'npm run deploy', so your new schema is available
+in sanity.io (https://gregcoman.sanity.studio/)
+
+2. Creating new schema/fields:
+- Go to /schemaTypes and create a new schema file (for ex: serviceType.js),
+which defines the shape of each document stored (all fields and images)
+- Make sure to add it to the array in /schemaTypes/index.js
+
+More info:
+Our CMS is sanity, to help Greg have a nice UI to edit text + images
+We currently only support services, but we should add everyting so he can edit
+all pages in the website
+
+I think usually CMS is organized like:
+-Home
+-About
+-Contact
+-Pricing
+
+But I heard that is best to not do this, and instead try our best to do something like:
+- Services (includes pricing)
+- ?? Photographers (for ex: {name: Greg, bio: '', about(?): '', awards: [],contact: {phone, location} images: [], mainImage: '', } )
+- ?? Company ( ?? general company info )
+
+This way its content-based instead of page-based.
+For example, services info will be displayed in MANY pages (/home, /pricing, etc), 
+so instead of basing our CMS on each page, we base it off the content, and /home can look
+into our CMS Services for this info. If we need a page that displays additional info for
+each service that we dont already store in our schema, then just add an extra field to
+services schema to store the new info that this new page will display
+

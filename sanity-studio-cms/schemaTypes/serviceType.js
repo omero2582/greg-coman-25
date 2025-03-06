@@ -1,0 +1,108 @@
+import {} from '@sanity/icons'
+
+export default {
+  name: 'service',
+  title: 'Service',
+  type: 'document',
+  fields: [
+    { name: 'title', title: 'Title', type: 'string', },
+    {
+      name: 'slug',
+      type: 'slug',
+      description: 'URL string',
+      options: {source: 'title'},
+      validation: (rule) => rule
+        .required()
+        .error(`Required to generate a page on the website`),
+      hidden: ({document}) => !document?.title,
+    },
+    { name: 'caption', title: 'Caption', type: 'string', },
+    { 
+      name: 'mainImage',
+      title: 'Main Image',
+      type: 'image',
+      description: 'Preview Image shown in /services',
+      options: { hotspot: true }
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'array',
+      of: [
+        { type: 'block' },
+        // {
+        //   type: 'image',
+        //   name: 'descriptionImage',
+        //   title: 'Description Image',
+        //   options: { hotspot: true },
+        // },
+        // embedding img like above is bad editing experience + bad dev experience
+      ],
+    },
+    { 
+      name: 'descriptionImage',
+      title: 'Description Image',
+      type: 'image',
+      description: 'Image shown alongside description text',
+      options: { hotspot: true },
+    },
+    {
+      name: 'images',
+      title: 'Images',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          fields: [
+            {
+              name: 'caption',
+              title: 'Caption',
+              type: 'string',
+              description: 'Optional caption for the image',
+              options: { hotspot: true },
+            }
+          ],
+        },
+      ],
+    },
+
+    { name: 'packages', title: 'Packages', type: 'array', of: [
+      {
+        type: 'object',
+        fields: [
+          { name: 'title', title: 'Title', type: 'string' },
+          { name: 'caption', title: 'caption', type: 'string' },
+          { name: 'price', title: 'Price', type: 'string' },
+          { name: 'duration', title: 'Duration', type: 'string' },
+          { name: 'location', title: 'Location', type: 'object', fields: [
+            {name: 'label', title: 'Label', type: 'string'},
+            {name: 'url', title: 'URL', type: 'string'},
+          ] },
+          { 
+            name: 'description',
+            title: 'Descrption',
+            type: 'array',
+            of: [
+              { type: 'block' }] 
+          },
+              ]
+      }
+    ]}
+
+
+    // Below is referency type for a schemaType package. Bad idea, explained in packageType.js
+    // {
+    //   name: 'packages',
+    //   title: 'Packages',
+    //   type: 'array',
+    //   of: [{ type: 'reference', to: [{ type: 'package' }] }]
+    // }
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: "caption",
+      media: "mainImage",
+    },
+  },
+};
