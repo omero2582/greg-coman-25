@@ -87,6 +87,25 @@ const PricingPage = () => {
         </div>
       </section>
 
+            {/* NEW: Event Photography */}
+            <section className="flex flex-col md:flex-row items-stretch gap-4">
+        {/* Slideshow Area */}
+        <div className="flex-1 bg-gray-200 flex items-center justify-center p-4">
+          <span>Picture</span>
+        </div>
+        {/* Package Details */}
+        <div className="flex-1 bg-white p-6 shadow-md flex flex-col justify-between">
+          <h3 className="text-xl font-medium mb-4">Event Photography Session</h3>
+          <p className="mb-4">Details Of Package</p>
+          <button 
+            className="w-fit px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            onClick={() => alert('More info about Family Portrait Session')}
+          >
+            More Info
+          </button>
+        </div>
+      </section>
+
       {/* NEW: FAQ Section */}
       <section className="bg-white p-6 shadow-md rounded">
         <h2 className="text-2xl font-semibold mb-4">FAQ Section</h2>
