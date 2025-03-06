@@ -22,14 +22,14 @@ export const MyQueryProvider = ({children}) => {
     }),
     defaultOptions: {
       queries: {
-        staleTime: 0,
+        staleTime: 1000 * 20,
         retry: false,
         // gcTime: 1000 * 60 * 60 * 24, 
         // This is garbage collection time. staleTime is prob what youre looking for instead
       },
       mutations: {
         retry: false,
-        staleTime: 0,
+        staleTime: 1000 * 20,
       }
     }
   })

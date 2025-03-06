@@ -7,8 +7,8 @@ import { useNavigate } from "react-router";
 // staleTime = ms until data is considered stale & remounting component will refetch
  export const useServiceQuery = (service) => {
    
-   const query = `*[_type == "service" && slug.current == "${service}"]`;
-   console.log(query);
+  const query = `*[_type == "service" && slug.current == "${service}"][0]`;
+  console.log(query);
   const fetchService = async () => {  
     const data = await client.fetch(query);
     console.log('service=', data)
@@ -19,12 +19,12 @@ import { useNavigate } from "react-router";
     queryKey: ["service", service],
     queryFn: fetchService,
     refetchOnWindowFocus: false,
-    staleTime: 1000 * 20, 
+    // staleTime: 1000 * 20, 
     retry: false,
   })
 }
 
-// Think below works, not sure
+
 export const useServicesAllQuery = () => {
   const queryClient = useQueryClient();
   
@@ -35,7 +35,7 @@ export const useServicesAllQuery = () => {
 
     if(data){
       data.forEach((service) => {
-        queryClient.setQueryData(['service', service?.slug?.current || service?._id], service);
+        queryClient.setQueryData(['service', service?.slug?.current], service);
       });
     }
 
@@ -46,7 +46,7 @@ export const useServicesAllQuery = () => {
     queryFn: fetchMySearches,
     queryKey: ["services"],
     refetchOnWindowFocus: false,
-    staleTime: 1000 * 20,
+    // staleTime: 1000 * 20,
     retry: false,
   })
 
