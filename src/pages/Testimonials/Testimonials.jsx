@@ -23,6 +23,12 @@ const testimonials = [
     image: "/reviewers/testimonial3.jpg",
   },
   {
+    name: "Chris Logue",
+    review:
+      "Greg's maternity photoshoot experience was magical. The lighting and emotions he captured were beyond perfect!",
+    image: "/reviewers/testimonial6.jpg",
+  },
+  {
     name: "ANNA VONSTRACK",
     review:
       "Greg and Jody were the perfect photographers for our wedding day. They made sure every precious moment was preserved.",
@@ -33,12 +39,6 @@ const testimonials = [
     review:
       "I needed branding photos for my startup, and Greg delivered amazing shots that perfectly represent my company’s vibe!",
     image: "/reviewers/testimonial5.jpg",
-  },
-  {
-    name: "Chris Logue",
-    review:
-      "Greg's maternity photoshoot experience was magical. The lighting and emotions he captured were beyond perfect!",
-    image: "/reviewers/testimonial6.jpg",
   },
 ];
 
