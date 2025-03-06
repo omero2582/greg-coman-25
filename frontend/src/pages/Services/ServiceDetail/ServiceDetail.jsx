@@ -15,17 +15,17 @@ const urlFor = (source) =>
 export default function ServiceDetail() {
   const serviceSlug = validator.escape(useParams().serviceSlug);
 
-  const {data, isPending, isLoading} = useServiceQuery(serviceSlug);
+  const {data, isPending, isLoading, error} = useServiceQuery(serviceSlug);
 
-  if(isLoading){
+  if(isPending){
     return <div>Loading..</div>
   }
 
-  if(!data || data.length === 0){
+  if(error || !data){
     return <div>Service Not Found</div>
   }
 
-  const { title, caption, description, descriptionImage, images, slug, packages } = data[0]
+  const { title, caption, description, descriptionImage, images, slug, packages } = data
 
   return (
       <div className='max-w-[1440px] mx-auto w-full grid bg-[#FFFCF9] justify-center'>
