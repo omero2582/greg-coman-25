@@ -1,5 +1,6 @@
 import {} from '@sanity/icons'
 
+// Covers Each Service info, add fields if missing info
 export default {
   name: 'service',
   title: 'Service',
@@ -74,10 +75,12 @@ export default {
           { name: 'caption', title: 'caption', type: 'string' },
           { name: 'price', title: 'Price', type: 'string' },
           { name: 'duration', title: 'Duration', type: 'string' },
-          { name: 'location', title: 'Location', type: 'object', fields: [
-            {name: 'label', title: 'Label', type: 'string'},
-            {name: 'url', title: 'URL', type: 'string'},
-          ] },
+          { name: 'location', title: 'Location', type: 'object', 
+            fields: [
+              {name: 'label', title: 'Label', type: 'string'},
+              {name: 'url', title: 'URL', type: 'string'},
+            ] 
+          },
           { 
             name: 'description',
             title: 'Descrption',
