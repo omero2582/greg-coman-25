@@ -14,9 +14,12 @@ const PricingPage = () => {
     "/pricingImages/engagement1.jpg",
   ];
   const familyImages = [
-    "/pricingImages/engagement1.jpg",
-    "/pricingImages/engagement1.jpg",
-    "/pricingImages/engagement1.jpg",
+    "/pricingImages/family1.jpg",
+    "/pricingImages/family2.jpg",
+    "/pricingImages/family3.jpg",
+    "/pricingImages/family4.jpg",
+    "/pricingImages/family5.jpg",
+    "/pricingImages/family6.jpg",
   ];
   const portfolioImages = [
     "/pricingImages/engagement1.jpg",
