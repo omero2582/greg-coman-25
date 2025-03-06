@@ -7,6 +7,7 @@ import Footer from './layout/Footer';
 import Headshots from './pages/Headshots/Headshots';
 import Testimonials from './pages/Testimonials/Testimonials';
 import PricingPage from './pages/PricingPage/PricingPage';
+import ServiceDetail from './pages/ServiceDetail/ServiceDetail';
 
 export default function App() {
 
@@ -20,6 +21,8 @@ export default function App() {
         <Route path="/headshots" element={<Headshots />} />
         <Route path="/testimonials" element={<Testimonials/>} />
         <Route path="/PricingPage" element={<PricingPage/>}/>
+        {/* <Route path="/services/myCustomLayoutForThisService" element={<ServiceCustomDifferentLayout/>} /> */}
+        <Route path="/services/:serviceSlug" element={<ServiceDetail/>} />
       </Routes>
       {/* <Footer /> */}
       </div>
