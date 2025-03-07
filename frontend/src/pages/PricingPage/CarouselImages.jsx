@@ -26,7 +26,7 @@ const CarouselImages = ({ images }) => {
           */
           <div
             key={idx}
-            className="flex items-center justify-center h-64 overflow-hidden"
+            className="flex items-center justify-center h-80 overflow-hidden"
           >
             <img
               src={imgSrc}
