@@ -125,7 +125,7 @@ const PricingPage = () => {
         "12 edited images included",
         "Delivery via online gallery or USB",
       ],
-      image: "/pricingImages/engagement1.jpg",
+      image: "/pricingImages/engagement2.jpg",
       contact: {
         phone: "647-204-2067",
         email: "info@gregcoman.com",
