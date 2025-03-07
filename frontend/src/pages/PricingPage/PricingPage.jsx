@@ -1,10 +1,230 @@
-import React from "react";
-import CarouselImages from "./CarouselImages"; // import your carousel component
-import BookingProcess from "../../components/ui/BookingProcess"; // ✅ Ensure correct import
+import React, { useState } from "react";
+import CarouselImages from "./CarouselImages";
+import BookingProcess from "../../components/ui/BookingProcess";
+
+/** 
+ * A modal component that displays full service details:
+ * title, subtitle, time, price, location, long description,
+ * bullet points, optional image, and contact info.
+ */
+function InfoModal({ isOpen, onClose, service }) {
+  if (!isOpen || !service) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8">
+      {/* Semi-transparent/blurred backdrop */}
+      <div
+        className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+        onClick={onClose}
+      />
+
+      {/* Modal Card */}
+      <div className="relative bg-white max-w-3xl w-full rounded-lg shadow-lg p-6 md:p-8 z-10">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+        >
+          ✕
+        </button>
+
+        {/* Title & Subtitle */}
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">
+          {service.title}
+        </h2>
+        <p className="text-gray-600 mb-4">{service.subtitle}</p>
+
+        {/* Row of Time, Price, Location */}
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          {/* "Buttons" for time, price, location */}
+          <span className="px-3 py-1 border rounded text-gray-700">
+            {service.time}
+          </span>
+          <span className="px-3 py-1 border rounded text-gray-700">
+            {service.price}
+          </span>
+          <span className="px-3 py-1 border rounded text-gray-700">
+            {service.location}
+          </span>
+        </div>
+
+        {/* Service Description */}
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          Service Description
+        </h3>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          {service.description}
+        </p>
+
+        {/* Bullet Points */}
+        {service.bulletPoints && service.bulletPoints.length > 0 && (
+          <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
+            {service.bulletPoints.map((point, idx) => (
+              <li key={idx}>{point}</li>
+            ))}
+          </ul>
+        )}
+
+        {/* Optional Image */}
+        {service.image && (
+          <div className="my-6">
+            <img
+              src={service.image}
+              alt={service.title}
+              className="rounded-md w-full md:w-1/2 mx-auto"
+            />
+          </div>
+        )}
+
+        {/* Contact Details */}
+        {service.contact && (
+          <div className="mt-6 text-gray-700">
+            <h4 className="text-lg font-semibold mb-1">Contact Details</h4>
+            {service.contact.phone && <p>{service.contact.phone}</p>}
+            {service.contact.email && <p>{service.contact.email}</p>}
+            {service.contact.address && <p>{service.contact.address}</p>}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 const PricingPage = () => {
-  // Make sure these images exist in public/pricingImages/... 
-  // (Replace with your actual images for each package.)
+  const [openModal, setOpenModal] = useState(null);
+
+  /**
+   * Each service object contains everything the modal needs:
+   * - title, subtitle
+   * - time, price, location
+   * - description
+   * - bulletPoints (array of strings)
+   * - optional image
+   * - contact details (phone, email, address)
+   */
+  const packageDetails = {
+    engagement: {
+      title: "Engagement Portrait Session",
+      subtitle: "Capturing Special Moments with your Sweetheart!",
+      time: "1 hr 30 min",
+      price: "$375",
+      location: "Location varies",
+      description: `
+        You are about to announce your commitment to one another. 
+        This has to be shared! Spend an afternoon hand-holding, hugging, 
+        and kissing your sweetheart at a beautiful country location.
+        
+        We’ll suggest poses and capture images that you envision. 
+        We’ll catch fleeting moments, seductive glances, and cozy candids. 
+        All with an artistic flair.
+      `,
+      bulletPoints: [
+        "Shoot location flexibility",
+        "Multiple poses & outfit changes",
+        "Selection of digital proofs uploaded securely",
+        "12 edited images included",
+        "Delivery via online gallery or USB",
+      ],
+      image: "/pricingImages/engagement1.jpg",
+      contact: {
+        phone: "647-204-2067",
+        email: "info@gregcoman.com",
+        address: "10737 Sixth Line, Georgetown, Ontario L7G 4S6, Canada",
+      },
+    },
+    business: {
+      title: "Business Profile Portrait",
+      subtitle: "Make a Positive First Impression!",
+      time: "45 min",
+      price: "$150",
+      location: "Studio/Office location",
+      description: `
+        Step up your professional presence with polished headshots
+        and dynamic corporate images. We’ll help you and your team
+        stand out in any industry.
+      `,
+      bulletPoints: [
+        "Professional headshots",
+        "Multiple background options",
+        "Digital retouching included",
+      ],
+      image: "/pricingImages/business1.jpg",
+      contact: {
+        phone: "647-204-2067",
+        email: "info@gregcoman.com",
+        address: "Georgetown, Ontario",
+      },
+    },
+    family: {
+      title: "Family Portrait Session",
+      subtitle: "Capture Special Moments with Your Loved Ones!",
+      time: "1 hr",
+      price: "$300",
+      location: "Location of your choice",
+      description: `
+        Create lasting memories in a relaxed environment! 
+        Perfect for holiday cards, family milestones, or just documenting everyday joy.
+      `,
+      bulletPoints: [
+        "Outdoor or in-home session",
+        "Multiple poses & groupings",
+        "Digital editing & basic retouching",
+      ],
+      image: "/pricingImages/family1.jpg",
+      contact: {
+        phone: "647-204-2067",
+        email: "info@gregcoman.com",
+        address: "Georgetown, Ontario",
+      },
+    },
+    portfolio: {
+      title: "Professional Portfolio Session",
+      subtitle: "Next Level in Your Career",
+      time: "1 hr",
+      price: "$200",
+      location: "Studio or On-Location",
+      description: `
+        Build or update your professional portfolio with high-quality images 
+        that showcase your unique style and talents — whether you’re an artist, 
+        model, or creative.
+      `,
+      bulletPoints: [
+        "Multiple outfits & styling",
+        "Headshots & full-body shots",
+        "Retouched high-res digital files",
+      ],
+      image: "/pricingImages/portfolio1.jpg",
+      contact: {
+        phone: "647-204-2067",
+        email: "info@gregcoman.com",
+        address: "Georgetown, Ontario",
+      },
+    },
+    event: {
+      title: "Event Photography Session",
+      subtitle: "Make Every Event Unforgettable!",
+      time: "2 hr",
+      price: "$400+",
+      location: "Venue of your choice",
+      description: `
+        From corporate gatherings to private parties, we’ll capture 
+        the best moments and showcase the energy of your event.
+      `,
+      bulletPoints: [
+        "Candid & posed shots",
+        "Online proofing gallery",
+        "Additional hours available for extra fee",
+      ],
+      image: "/pricingImages/event1.jpg",
+      contact: {
+        phone: "647-204-2067",
+        email: "info@gregcoman.com",
+        address: "Georgetown, Ontario",
+      },
+    },
+  };
+
+  // Carousel images for each package
   const engagementImages = [
     "/pricingImages/engagement1.jpg",
     "/pricingImages/engagement2.jpg",
@@ -41,12 +261,19 @@ const PricingPage = () => {
     "/pricingImages/event7.jpg",
   ];
 
+  // Helper to open modal for each package
+  const openPackageModal = (packageKey) => {
+    setOpenModal(packageKey);
+  };
+
+  // Helper to close
+  const closeModal = () => {
+    setOpenModal(null);
+  };
+
   return (
     <main className="bg-gray-50 min-h-screen">
-      {/*
-        ========== HERO / HEADER SECTION ==========
-        A top banner with a subtle background gradient and text center-aligned.
-      */}
+      {/* HEADER */}
       <header className="bg-gradient-to-r from-blue-50 to-white py-12 px-4 text-center">
         <h1 className="text-4xl font-extrabold text-gray-800 mb-4">
           Simple & Transparent Pricing
@@ -56,281 +283,286 @@ const PricingPage = () => {
         </p>
       </header>
 
-      {/*
-        ========== MAIN CONTENT AREA ==========
-        Give it a max-width container, some top/bottom padding, and spacing between sections.
-      */}
+      {/* MAIN CONTENT */}
       <section className="max-w-6xl mx-auto py-12 px-4 space-y-12">
-        {/* Sub-heading */}
+        {/* Title */}
         <div className="text-center space-y-2">
-          <h2 className="text-2xl font-bold text-gray-800">Pricing Tiers</h2>
+          <h2 className="text-2xl font-bold text-gray-800">Our Services</h2>
           <p className="text-gray-600">
             We offer various packages; take your pick and be amazed!
           </p>
         </div>
 
-        {/* Package 1: Engagement */}
+        {/* PACKAGE 1: Engagement */}
         <div className="flex flex-col md:flex-row items-stretch gap-8">
-          {/* Left column: Slideshow/Images */}
           <div className="md:w-1/2">
             <CarouselImages images={engagementImages} />
           </div>
-          {/* Right column: Details */}
-          <div
-            className="
-              md:w-1/2 bg-white p-6 md:p-8
-              rounded-xl shadow-lg hover:shadow-xl transition-shadow
-              flex flex-col justify-center
-            "
-          >
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
-              Engagement Portrait Session
+          <div className="md:w-1/2 bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex flex-col justify-center">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">
+              {packageDetails.engagement.title}
             </h3>
+            <div className="flex items-center space-x-4 mb-4">
+              <span className="font-semibold text-gray-700">
+                {packageDetails.engagement.time}
+              </span>
+              <span className="text-gray-700">
+                {packageDetails.engagement.price}
+              </span>
+            </div>
             <p className="mb-6 text-gray-700 leading-relaxed">
-              Perfect for couples who want to capture their engagement memories
-              in a fun and personal way. Let us celebrate this new chapter of
-              your life with beautiful portraits that reflect your love story.
+              {packageDetails.engagement.subtitle}
             </p>
             <button
-              className="
-                self-start px-6 py-2 bg-blue-600 text-white
-                rounded-full hover:bg-blue-700 transition-colors
-              "
-              onClick={() => alert("More info about Engagement Portrait Session")}
+              className="self-start px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+              onClick={() => openPackageModal("engagement")}
             >
               More Info
             </button>
           </div>
         </div>
 
-        {/* Package 2: Business (flipped) */}
+        {/* PACKAGE 2: Business (flipped) */}
         <div className="flex flex-col md:flex-row-reverse items-stretch gap-8">
-          {/* Right column: Slideshow/Images */}
           <div className="md:w-1/2">
             <CarouselImages images={businessImages} />
           </div>
-          {/* Left column: Details */}
-          <div
-            className="
-              md:w-1/2 bg-white p-6 md:p-8
-              rounded-xl shadow-lg hover:shadow-xl transition-shadow
-              flex flex-col justify-center
-            "
-          >
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
-              Business Profile Portrait
+          <div className="md:w-1/2 bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex flex-col justify-center">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">
+              {packageDetails.business.title}
             </h3>
+            <div className="flex items-center space-x-4 mb-4">
+              <span className="font-semibold text-gray-700">
+                {packageDetails.business.time}
+              </span>
+              <span className="text-gray-700">
+                {packageDetails.business.price}
+              </span>
+            </div>
             <p className="mb-6 text-gray-700 leading-relaxed">
-              Step up your professional presence with polished headshots
-              and dynamic corporate images. We’ll help you and your team
-              stand out in any industry.
+              {packageDetails.business.subtitle}
             </p>
             <button
-              className="
-                self-start px-6 py-2 bg-blue-600 text-white
-                rounded-full hover:bg-blue-700 transition-colors
-              "
-              onClick={() => alert("More info about Business Profile Portrait")}
+              className="self-start px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+              onClick={() => openPackageModal("business")}
             >
               More Info
             </button>
           </div>
         </div>
 
-        {/* Package 3: Family */}
+        {/* PACKAGE 3: Family */}
         <div className="flex flex-col md:flex-row items-stretch gap-8">
           <div className="md:w-1/2">
             <CarouselImages images={familyImages} />
           </div>
-          <div
-            className="
-              md:w-1/2 bg-white p-6 md:p-8
-              rounded-xl shadow-lg hover:shadow-xl transition-shadow
-              flex flex-col justify-center
-            "
-          >
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
-              Family Portrait Session
+          <div className="md:w-1/2 bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex flex-col justify-center">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">
+              {packageDetails.family.title}
             </h3>
+            <div className="flex items-center space-x-4 mb-4">
+              <span className="font-semibold text-gray-700">
+                {packageDetails.family.time}
+              </span>
+              <span className="text-gray-700">
+                {packageDetails.family.price}
+              </span>
+            </div>
             <p className="mb-6 text-gray-700 leading-relaxed">
-              Capture special moments with your loved ones in a relaxed
-              environment. Perfect for holiday cards, family milestones,
-              or just documenting the everyday joy of family life.
+              {packageDetails.family.subtitle}
             </p>
             <button
-              className="
-                self-start px-6 py-2 bg-blue-600 text-white
-                rounded-full hover:bg-blue-700 transition-colors
-              "
-              onClick={() => alert("More info about Family Portrait Session")}
+              className="self-start px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+              onClick={() => openPackageModal("family")}
             >
               More Info
             </button>
           </div>
         </div>
 
-        {/* Package 4: Portfolio (flipped) */}
+        {/* PACKAGE 4: Portfolio (flipped) */}
         <div className="flex flex-col md:flex-row-reverse items-stretch gap-8">
           <div className="md:w-1/2">
             <CarouselImages images={portfolioImages} />
           </div>
-          <div
-            className="
-              md:w-1/2 bg-white p-6 md:p-8
-              rounded-xl shadow-lg hover:shadow-xl transition-shadow
-              flex flex-col justify-center
-            "
-          >
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
-              Professional Portfolio Session
+          <div className="md:w-1/2 bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex flex-col justify-center">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">
+              {packageDetails.portfolio.title}
             </h3>
+            <div className="flex items-center space-x-4 mb-4">
+              <span className="font-semibold text-gray-700">
+                {packageDetails.portfolio.time}
+              </span>
+              <span className="text-gray-700">
+                {packageDetails.portfolio.price}
+              </span>
+            </div>
             <p className="mb-6 text-gray-700 leading-relaxed">
-              Build or update your professional portfolio with high-quality
-              images that showcase your unique style and talents — whether
-              you’re an artist, model, or creative.
+              {packageDetails.portfolio.subtitle}
             </p>
             <button
-              className="
-                self-start px-6 py-2 bg-blue-600 text-white
-                rounded-full hover:bg-blue-700 transition-colors
-              "
-              onClick={() => alert("More info about Professional Portfolio Session")}
+              className="self-start px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+              onClick={() => openPackageModal("portfolio")}
             >
               More Info
             </button>
           </div>
         </div>
 
-        {/* Package 5: Event */}
+        {/* PACKAGE 5: Event */}
         <div className="flex flex-col md:flex-row items-stretch gap-8">
           <div className="md:w-1/2">
             <CarouselImages images={eventImages} />
           </div>
-          <div
-            className="
-              md:w-1/2 bg-white p-6 md:p-8
-              rounded-xl shadow-lg hover:shadow-xl transition-shadow
-              flex flex-col justify-center
-            "
-          >
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
-              Event Photography Session
+          <div className="md:w-1/2 bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow flex flex-col justify-center">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">
+              {packageDetails.event.title}
             </h3>
+            <div className="flex items-center space-x-4 mb-4">
+              <span className="font-semibold text-gray-700">
+                {packageDetails.event.time}
+              </span>
+              <span className="text-gray-700">
+                {packageDetails.event.price}
+              </span>
+            </div>
             <p className="mb-6 text-gray-700 leading-relaxed">
-              Make every event unforgettable! From corporate gatherings to
-              private parties, we’ll capture the best moments and showcase
-              the energy of your event.
+              {packageDetails.event.subtitle}
             </p>
             <button
-              className="
-                self-start px-6 py-2 bg-blue-600 text-white
-                rounded-full hover:bg-blue-700 transition-colors
-              "
-              onClick={() => alert("More info about Event Photography")}
+              className="self-start px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+              onClick={() => openPackageModal("event")}
             >
               More Info
             </button>
           </div>
         </div>
 
-        {/* FAQ Section */}
-<div className="bg-white p-6 md:p-8 rounded-xl shadow-md">
-  <h2 className="text-3xl font-bold text-gray-800 mb-4">
-    Frequently Asked Questions
-  </h2>
-  <p className="text-gray-500 mb-8">
-    We’ve compiled answers to some of our most common questions.
-    If you need more info or have other questions, feel free to contact us!
-  </p>
-
-  <div className="space-y-6">
-    {/* FAQ Item */}
-    <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
-      <h3 className="font-semibold text-gray-800 text-lg">
-        Question 1: What should we wear to our session?
-      </h3>
-      <p className="mt-2 text-gray-700 leading-relaxed">
-        This can vary greatly and depend on your photographer’s style, your style,
-        the location, the ages of the people, etc. Rule of thumb tends to be:
-        choose clothing that does not detract from faces, or overpower the image.
-        Selecting 2 or 3 colours that blend well together for each person to wear
-        is often recommended. Ask your professional photographer for a consultation
-        based on your situation.
+   {/* FAQ Section */}
+   <div className="bg-white p-6 md:p-8 rounded-xl shadow-md">
+      <h2 className="text-3xl font-bold text-gray-800 mb-4">
+        Frequently Asked Questions
+      </h2>
+      <p className="text-gray-500 mb-8">
+        We’ve compiled answers to some of our most common questions.
+        If you need more info or have other questions, feel free to contact us!
       </p>
-    </div>
 
-    {/* FAQ Item */}
-    <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
-      <h3 className="font-semibold text-gray-800 text-lg">
-        Question 2: Can I share the photos on Social Media?
-      </h3>
-      <p className="mt-2 text-gray-700 leading-relaxed">
-        Yes, you are welcome to share the photos on your personal social media
-        accounts. Please credit Greg Coman as the photographer. However, altering
-        or selling the images without permission is not allowed.
-      </p>
-    </div>
+      <div className="space-y-6">
+        {/* FAQ Item */}
+        <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
+          <h3 className="font-semibold text-gray-800 text-lg">
+            Question 1: What should we wear to our session?
+          </h3>
+          <p className="mt-2 text-gray-700 leading-relaxed">
+            This can vary greatly and depend on your photographer’s style, your style,
+            the location, the ages of the people, etc. Rule of thumb tends to be:
+            choose clothing that does not detract from faces, or overpower the image.
+            Selecting 2 or 3 colours that blend well together for each person to wear
+            is often recommended. Ask your professional photographer for a consultation
+            based on your situation.
+          </p>
+        </div>
 
-    {/* FAQ Item */}
-    <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
-      <h3 className="font-semibold text-gray-800 text-lg">
-        Question 3: How long will you keep the photos?
-      </h3>
-      <p className="mt-2 text-gray-700 leading-relaxed">
-        We typically retain digital copies of client photos for a reasonable
-        period (1 year) to ensure we can fulfill any future requests or provide
-        replacements if needed. We do not provide extended archival services past
-        one year, but we can recommend third-party archival services. We recommend
-        backing up your digital copies of the photos in multiple locations to prevent
-        loss. However, if you lose your copies, please contact us, and we will do our
-        best to provide replacements, subject to availability and any applicable fees.
-      </p>
-    </div>
+        {/* FAQ Item */}
+        <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
+          <h3 className="font-semibold text-gray-800 text-lg">
+            Question 2: Can I share the photos on Social Media?
+          </h3>
+          <p className="mt-2 text-gray-700 leading-relaxed">
+            Yes, you are welcome to share the photos on your personal social media
+            accounts. Please credit Greg Coman as the photographer. However, altering
+            or selling the images without permission is not allowed.
+          </p>
+        </div>
 
-    {/* FAQ Item */}
-    <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
-      <h3 className="font-semibold text-gray-800 text-lg">
-        Question 4: Will you use my photos for promotional purposes?
-      </h3>
-      <p className="mt-2 text-gray-700 leading-relaxed">
-        Unless otherwise specified in writing, I may use select images from
-        our session for promotional purposes, including my website, social media,
-        and marketing materials. I respect your privacy and will typically request
-        your consent first.
-      </p>
-    </div>
+        {/* FAQ Item */}
+        <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
+          <h3 className="font-semibold text-gray-800 text-lg">
+            Question 3: How long will you keep the photos?
+          </h3>
+          <p className="mt-2 text-gray-700 leading-relaxed">
+            We typically retain digital copies of client photos for a reasonable
+            period (1 year) to ensure we can fulfill any future requests or provide
+            replacements if needed. We do not provide extended archival services past
+            one year, but we can recommend third-party archival services. We recommend
+            backing up your digital copies of the photos in multiple locations to prevent
+            loss. However, if you lose your copies, please contact us, and we will do our
+            best to provide replacements, subject to availability and any applicable fees.
+          </p>
+        </div>
 
-    {/* FAQ Item */}
-    <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
-      <h3 className="font-semibold text-gray-800 text-lg">
-        Question 5: What is the benefit of investing in a professional photographer?
-      </h3>
-      <p className="mt-2 text-gray-700 leading-relaxed">
-        You typically get what you pay for. You will receive premium service, quality
-        photo products, and the photographers’ range of experience and skills.
-        True professionals keep up with their skills and education, invest thousands
-        of dollars into the best professional photographic lighting and camera
-        equipment, as well as fast computers.
-      </p>
-    </div>
+        {/* FAQ Item */}
+        <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
+          <h3 className="font-semibold text-gray-800 text-lg">
+            Question 4: Will you use my photos for promotional purposes?
+          </h3>
+          <p className="mt-2 text-gray-700 leading-relaxed">
+            Unless otherwise specified in writing, I may use select images from
+            our session for promotional purposes, including my website, social media,
+            and marketing materials. I respect your privacy and will typically request
+            your consent first.
+          </p>
+        </div>
 
-    {/* FAQ Item */}
-    <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
-      <h3 className="font-semibold text-gray-800 text-lg">
-        Question 6: Why do I need professional headshots instead of doing one myself with my phone?
-      </h3>
-      <p className="mt-2 text-gray-700 leading-relaxed">
-        Professional photographers who specialize in headshots know how to light,
-        pose, style and bring out the best in you, in a way you never could with
-        your phone at the end of your arm. You and your online persona deserve
-        the best image of yourself!
-      </p>
-    </div>
-  </div>
-</div>
+        {/* FAQ Item */}
+        <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
+          <h3 className="font-semibold text-gray-800 text-lg">
+            Question 5: What is the benefit of investing in a professional photographer?
+          </h3>
+          <p className="mt-2 text-gray-700 leading-relaxed">
+            You typically get what you pay for. You will receive premium service, quality
+            photo products, and the photographers’ range of experience and skills.
+            True professionals keep up with their skills and education, invest thousands
+            of dollars into the best professional photographic lighting and camera
+            equipment, as well as fast computers.
+          </p>
+        </div>
+
+        {/* FAQ Item */}
+        <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm transition-shadow">
+          <h3 className="font-semibold text-gray-800 text-lg">
+            Question 6: Why do I need professional headshots instead of doing one myself with my phone?
+          </h3>
+          <p className="mt-2 text-gray-700 leading-relaxed">
+            Professional photographers who specialize in headshots know how to light,
+            pose, style and bring out the best in you, in a way you never could with
+            your phone at the end of your arm. You and your online persona deserve
+            the best image of yourself!
+          </p>
+        </div>
+        </div>
+        </div>
 
         <BookingProcess />
       </section>
+
+      {/* ========== MODALS ========== */}
+      <InfoModal
+        isOpen={Boolean(openModal === "engagement")}
+        onClose={closeModal}
+        service={packageDetails.engagement}
+      />
+      <InfoModal
+        isOpen={Boolean(openModal === "business")}
+        onClose={closeModal}
+        service={packageDetails.business}
+      />
+      <InfoModal
+        isOpen={Boolean(openModal === "family")}
+        onClose={closeModal}
+        service={packageDetails.family}
+      />
+      <InfoModal
+        isOpen={Boolean(openModal === "portfolio")}
+        onClose={closeModal}
+        service={packageDetails.portfolio}
+      />
+      <InfoModal
+        isOpen={Boolean(openModal === "event")}
+        onClose={closeModal}
+        service={packageDetails.event}
+      />
     </main>
   );
 };
