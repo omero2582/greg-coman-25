@@ -10,8 +10,11 @@ const PricingPage = () => {
     "/pricingImages/engagement3.jpg",
   ];
   const businessImages = [
-    "/pricingImages/engagement1.jpg",
-    "/pricingImages/engagement1.jpg",
+    "/pricingImages/business1.jpg",
+    "/pricingImages/business2.jpg",
+    "/pricingImages/business3.jpg",
+    "/pricingImages/business4.jpg",
+    "/pricingImages/business5.jpg",
   ];
   const familyImages = [
     "/pricingImages/family1.jpg",
@@ -22,13 +25,19 @@ const PricingPage = () => {
     "/pricingImages/family6.jpg",
   ];
   const portfolioImages = [
-    "/pricingImages/engagement1.jpg",
-    "/pricingImages/engagement1.jpg",
+    "/pricingImages/portfolio1.jpg",
+    "/pricingImages/portfolio2.jpg",
+    "/pricingImages/portfolio3.jpg",
+    "/pricingImages/portfolio4.jpg",
   ];
   const eventImages = [
-    "/pricingImages/engagement1.jpg",
-    "/pricingImages/engagement1.jpg",
-    "/pricingImages/engagement1.jpg",
+    "/pricingImages/event1.jpg",
+    "/pricingImages/event2.jpg",
+    "/pricingImages/event3.jpg",
+    "/pricingImages/event4.jpg",
+    "/pricingImages/event5.jpg",
+    "/pricingImages/event6.jpg",
+    "/pricingImages/event7.jpg",
   ];
 
   return (
