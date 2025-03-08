@@ -3,15 +3,11 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 // import axios from "axios";
 
-
-// staleTime = ms until data is considered stale & remounting component will refetch
  export const useServiceQuery = (service) => {
    
   const query = `*[_type == "service" && slug.current == "${service}"][0]`;
-  console.log(query);
   const fetchService = async () => {  
     const data = await client.fetch(query);
-    console.log('service=', data)
     return data;
   }
 

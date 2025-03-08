@@ -1,6 +1,6 @@
 import React, { Children, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { useServiceQuery } from '@/hooks/useServices';
+import { useServiceQuery } from '@/hooks/cms/index';
 import validator from 'validator';
 import { useParams } from 'react-router';
 import { PortableText } from '@portabletext/react';
