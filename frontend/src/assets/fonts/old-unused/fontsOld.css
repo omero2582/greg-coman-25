@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Cronos Pro Bold Display';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Cronos Pro Bold Display'), url('./assets//fonts/Cronos-Pro-Bold-Display.woff') format('woff');
+  }
+  
+
+
+@font-face {
+font-family: 'Cronos Pro Caption';
+font-style: normal;
+font-weight: normal;
+src: local('Cronos Pro Caption'), url('./assets/fonts/Cronos-Pro-Caption.woff') format('woff');
+}

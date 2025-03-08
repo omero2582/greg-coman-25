@@ -1,15 +1,88 @@
+/*Old source https://font.download/font/cronospro was missing 'Caption Italic'
+/*New Source - https://fontshub.pro/font/cronos-download*/
+
+/*Cronos Display*/
 @font-face {
-  font-family: 'Cronos Pro Bold Display';
+  font-family: 'Cronos Pro Display';
   font-style: normal;
-  font-weight: normal;
-  src: local('Cronos Pro Bold Display'), url('./assets//fonts/Cronos-Pro-Bold-Display_12431.woff') format('woff');
-  }
-  
-
+  font-weight: 400;
+  src: local('Cronos Pro Display'), url('CronosPro-Disp.woff2') format('woff2');
+} 
 
 @font-face {
-font-family: 'Cronos Pro Caption';
-font-style: normal;
-font-weight: normal;
-src: local('Cronos Pro Caption'), url('./assets/fonts/Cronos-Pro-Caption_12437.woff') format('woff');
+  font-family: 'Cronos Pro Display';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Cronos Pro Display Italic'), url('CronosPro-DispIt.woff2') format('woff2');
+} 
+
+@font-face {
+  font-family: 'Cronos Pro Display';
+  font-style: normal;
+  font-weight: 500 600;
+  src: local('Cronos Pro Semibold Display'), url('CronosPro-SemiboldDisp.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cronos Pro Display';
+  font-style: italic;
+  font-weight: 500 600;
+  src: local('Cronos Pro Semibold Display Italic'), url('CronosPro-SemiboldDispIt.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cronos Pro Display';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Cronos Pro Bold Display'), url('CronosPro-BoldDisp.woff2') format('woff2');
+} 
+
+@font-face {
+  font-family: 'Cronos Pro Display';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Cronos Pro Bold Display Italic'), url('CronosPro-BoldDispIt.woff2') format('woff2');
+} 
+
+/*Cronos Caption*/
+@font-face {
+  font-family: 'Cronos Pro Caption';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cronos Pro Caption'), url('CronosPro-Capt.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cronos Pro Caption';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Cronos Pro Caption Italic'), url('CronosPro-CaptIt.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cronos Pro Caption';
+  font-style: normal;
+  font-weight: 500 600;
+  src: local('Cronos Pro Semibold Caption'), url('CronosPro-SemiboldCapt.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cronos Pro Caption';
+  font-style: italic;
+  font-weight: 500 600;
+  src: local('Cronos Pro Semibold Caption Italic'), url('CronosPro-SemiboldCaptIt.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cronos Pro Caption';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Cronos Pro Bold Caption'), url('CronosPro-BoldCapt.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cronos Pro Caption';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Cronos Pro Bold Caption Italic'), url('CronosPro-BoldCaptIt.woff2') format('woff2');
 }

@@ -1,4 +1,4 @@
-import { useServicesAllQuery } from '@/hooks/useServices'
+import { useServicesAllQuery } from '@/hooks/cms/index'
 import React from 'react'
 import { Link } from 'react-router';
 
