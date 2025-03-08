@@ -140,7 +140,7 @@ function Packages({packagesRaw}){
             </a>
           </p>
         </div>
-        <p className='font-[700]! italic'>test</p>
+        <p className='font-[600]! italic'>test</p>
         <div className='max-w-full  prose prose-lg prose-ul:leading-[1.55] prose-li:my-[0px]  prose-black prose-strong:font-bold prose-p:mb-0 prose-ul:mt-0'>
           {Array.isArray(selectedPackage.description) && 
             <PortableText 
