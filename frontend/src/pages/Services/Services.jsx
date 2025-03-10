@@ -17,7 +17,7 @@ export default function Services() {
   return (
     <div>
       <h1>Services</h1>
-      <div>{data.map(s => (
+      <div className='grid'>{data.map(s => (
         <Link to={`/services/${s.slug.current}`}>
           {s.name}
         </Link>
