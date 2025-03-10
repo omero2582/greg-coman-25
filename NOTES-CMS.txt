@@ -6,8 +6,11 @@ sanity-studio-cms is a React App provided by sanity
 
 1. To run:
 - 'npm run dev' to view your current schema in localhost
-- After you make changes, be sure to 'npm run deploy', so your new schema is available
+- commit your changes to Github
+- After, be sure to 'npm run deploy', so your new schema is available
 in sanity.io (https://gregcoman.sanity.studio/)
+(Not sure if it is best to commit to github as the 2nd step, 
+The idea was tot no overwrite each other's schemaTypes if we are editing their schema)
 
 2. Creating new schema/fields:
 - Go to /schemaTypes and create a new schema file (for ex: serviceType.js),
@@ -19,21 +22,40 @@ Our CMS is sanity, to help Greg have a nice UI to edit text + images
 We currently only support services, but we should add everyting so he can edit
 all pages in the website
 
-I think usually CMS is organized like:
--Home
--About
--Contact
--Pricing
-
-But I heard that is best to not do this, and instead try our best to do something like:
+===== Schema Types We Need =====
+1. Content Schemas 
+Try our best to do something like:
 - Services (includes pricing)
+- Testimonials
+- Blogs
 - ?? Photographers (for ex: {name: Greg, bio: '', about(?): '', awards: [],contact: {phone, location} images: [], mainImage: '', } )
 - ?? Company ( ?? general company info )
 
-This way its content-based instead of page-based.
-For example, services info will be displayed in MANY pages (/home, /pricing, etc), 
-so instead of basing our CMS on each page, we base it off the content, and /home can look
-into our CMS Services for this info. If we need a page that displays additional info for
-each service that we dont already store in our schema, then just add an extra field to
-services schema to store the new info that this new page will display
+This way we are grouping content that can be query-able from any page.
+However, we will still need to also have schemaTypes like:
+
+2. Pages Schemas
+- homePage
+- servicesPage
+- testimonialsPage
+- blogsPage
+
+This is unavoidable, because we need to allow each page to have different editable
+content for their sections, headings, images, captions, decriptions.
+I previously tried to not have these, but I realize it is way too complicated 
+and not practical if we avoid this and if we tried to squeeze each pages's details
+into the 'content' schemas on the first list above
+
+3. Reusable Schemas
+Either:
+- Booking
+- Steps
+
+Or just 1 schema
+- Global
+which contains .booking and .steps
+^^ Think Global might be best, not sure
+
+These are for reusable component content. For example, the Booking and Steps
+components are in almost all of our Figma design pages
 
