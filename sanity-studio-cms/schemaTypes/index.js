@@ -1,6 +1,8 @@
+import awardsType from "./content/awardsType";
 import companyType from "./content/companyType";
 import photographerType from "./content/photographerType";
 import serviceType from "./content/serviceType";
+import testimonialsType from "./content/testimonialsType";
 import globalType from "./global/globalType";
 import aboutPageType from "./pages/aboutPageType";
 import blogsPageType from "./pages/blogsPageType";
@@ -20,7 +22,12 @@ export const schemaTypes = [
   globalType,
 
   // Content
+  // Done Content
   serviceType,
+  testimonialsType,
+  awardsType,
+
+  // Not Done Content
   photographerType,
   // companyType, //<== I think we dont need this one
 

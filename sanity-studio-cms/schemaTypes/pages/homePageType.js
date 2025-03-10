@@ -140,7 +140,7 @@ export default {
     },
     {
       name: 'testimonialSection', title: 'Testimonial Section', type: 'array', 
-      description: 'Section towards the bottom, shows main testimonial',
+      description: 'Main testimonial. Section is towards the bottom',
       of: [
         {
           type: 'object',

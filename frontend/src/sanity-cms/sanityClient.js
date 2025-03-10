@@ -6,6 +6,8 @@ export const client = createClient({
   dataset: "production",
   apiVersion: "2024-01-01",
   useCdn: false,
+  //TODO think turn ^^ this on, not sure if/how it will delay updates to our content though
+  // but its generally very very good to turn on
 });
 
 export const builder = imageUrlBuilder(client);
