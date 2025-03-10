@@ -226,9 +226,12 @@ const PricingPage = () => {
 
   // Carousel images for each package
   const engagementImages = [
-    "/pricingImages/engagement1.jpg",
-    "/pricingImages/engagement2.jpg",
-    "/pricingImages/engagement3.jpg",
+    "/pricingImages/engagment1.jpg",
+    "/pricingImages/engagment2.jpg",
+    "/pricingImages/engagment3.jpg",
+    "/pricingImages/engagment5.jpg",
+    "/pricingImages/engagment6.jpg",
+    "/pricingImages/engagment7.jpg",
   ];
   const businessImages = [
     "/pricingImages/business1.jpg",
