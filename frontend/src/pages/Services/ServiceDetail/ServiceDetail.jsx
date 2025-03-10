@@ -38,7 +38,7 @@ export default function ServiceDetail() {
       <div className='max-w-[1440px] mx-auto w-full grid bg-zinc-50 justify-center'>
         {/**leading-[72px] */}
         <div className='mx-auto mt-4 mb-[12px] grid justify-items-center'>
-          <h1 className='text-[54px] text-brandBlue-800 leading-[1] uppercase'>
+          <h1 className='text-[57px] text-brandBlue-800 leading-[1] uppercase'>
             {name}
           </h1>
           <p className='text-[1.25rem] text-brandTeal-800'>{caption}</p>
@@ -85,8 +85,13 @@ function About({descriptionRaw, descriptionImageRaw}){
 
   return (
     <div className='px-2 my-18 max-w-[880px] justify-self-center justify-items-center gap-y-6 gap-x-14 grid sm:grid-cols-[auto_max-content]'>
-      <div className='space-y-2 self-center text-[1.25rem] leading-[1.55]'>
-      {Array.isArray(descriptionRaw) && <PortableText value={descriptionRaw} />}
+      <div className=' self-center text-[1.25rem] leading-[1.55]'>
+      {Array.isArray(descriptionRaw) 
+      && 
+      <div className='space-y-2 prose prose-xl prose-black leading-normal'>
+        <PortableText value={descriptionRaw} />
+      </div>
+      }
       </div>
         {descriptionImageRaw && 
       < img 
@@ -110,13 +115,13 @@ function Packages({packagesRaw}){
         <button 
           key={p.name}
           onClick={() => setSelectedTab(p.name)}
-          className={`tracking-wide relative text-[1.2rem] px-4 py-1  hover:bg-brandBlue-900
-            ${p.name === selectedTab ? 'bg-brandBlue-900 text-stone-100' : 'text-stone-200 bg-brandBlue-800'}
+          className={`tracking-wide relative text-[1.2rem] px-4 py-1  hover:bg-brandBlue-800
+            ${p.name === selectedTab ? ' text-stone-100 bg-brandBlue-800' : 'text-stone-200 bg-brandBlue-900 '}
             `}
         >
           {p.name}
-          {p.name === selectedTab && 
-          <span className={`absolute h-[3px] w-full bg-black left-0 bottom-0`}/>}
+          {/* {p.name === selectedTab && 
+          <span className={`absolute h-[3px] w-full bg-black left-0 bottom-0`}/>} */}
         </button>
         ))}
       </div>
@@ -127,7 +132,7 @@ function Packages({packagesRaw}){
           </h2>
           
           <h3 className='text-[1.15rem] italic'>{selectedPackage.caption}</h3>
-          <div className='text-[1.1rem] grid grid-flow-col justify-start items-center'>
+          <div className='text-[1.13rem] grid grid-flow-col justify-start items-center'>
             {`${selectedPackage.price} | ${selectedPackage.duration} | `}
             {/* <a href={`http://maps.google.com/?q=${selectedPackage.location.label}`}> */}
             {/* <a target='_blank' href={selectedPackage.location.url}>
