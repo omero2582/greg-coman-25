@@ -11,22 +11,22 @@ const testimonials = [
     image: "/reviewers/testimonial1.jpg", // ✅ Ensure this file exists in public/reviewers/
   },
   {
-    name: "GRACIANA DUQUE",
+    name: "CEL LOGARTA",
     review:
-      "Greg did my professional headshots and they turned out outstanding! He made me feel comfortable and confident during the session.",
-    image: "/reviewers/testimonial4.jpg",
+      "Greg is very easy to work with, on time, and very usable shots for formal events. On the fun side - love the way his lenses capture nature and flow, his shots are very organic.",
+    image: "/reviewers/cel.jpg",
   },
   {
     name: "ALEXIS LAKEY",
     review:
-      "Greg has quickly become our family photographer. He made our backyard wedding look like a dream, capturing candid and emotional moments perfectly.",
-    image: "/reviewers/testimonial3.jpg",
+      "Greg has quickly become our family photographer - just that statement makes me feel so glamorous! Greg and Beatrice fashioned our backyard wedding collection that is exhibition worthy at the Guggenheim.",
+    image: "/reviewers/Alexis.jpg",
   },
   {
-    name: "Chris Logue",
+    name: "ALEKSANDRA NINKOVIC",
     review:
-      "Greg's maternity photoshoot experience was magical. The lighting and emotions he captured were beyond perfect!",
-    image: "/reviewers/testimonial6.jpg",
+      "Greg and his partner are very accommodating and professional. They are patient and work around all your specific needs! The quality of their work is extremely good! We are looking forward to more business with them!",
+    image: "/reviewers/alek.jpg",
   },
   {
     name: "ANNA VONSTRACK",
@@ -35,10 +35,10 @@ const testimonials = [
     image: "/reviewers/testimonial2.jpg",
   },
   {
-    name: "MARK ROBINSON",
+    name: "GHOSPFOUNDATION",
     review:
-      "I needed branding photos for my startup, and Greg delivered amazing shots that perfectly represent my company’s vibe!",
-    image: "/reviewers/testimonial5.jpg",
+      "We hired Greg and Jody to photograph our annual Gala in November and we are sure glad we did! They captured so many significant moments on the night of the Gala and the photos turned absolutely incredible, with many to choose from.",
+    image: "/reviewers/GHOP.jpg",
   },
 ];
 
