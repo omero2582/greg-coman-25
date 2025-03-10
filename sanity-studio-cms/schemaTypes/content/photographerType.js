@@ -1,5 +1,9 @@
 
-// Should cover Greg's info, add fields if missing
+// This should be loaded in About,
+// Havent changed too much here, prob needs some changes
+// I remember greg wanted to support about Jodi in the future, so making a
+// Photgrapher shcema like this works out
+
 export default {
   name: 'photographer',
   type: 'document',
@@ -8,16 +12,6 @@ export default {
     {
       name: 'name',
       title: 'Name',
-      type: 'string',
-    },
-    {
-      name: 'greeting',
-      title: 'Greeting',
-      type: 'string',
-    },
-    {
-      name: 'buttonText',
-      title: 'Button Text',
       type: 'string',
     },
     {
@@ -58,19 +52,6 @@ export default {
           ] 
         },
       ],
-    },
-    {
-      name: 'images',
-      title: 'Images',
-      type: 'array',
-      of: [{ type: 'image' }],
-      options: { hotspot: true },
-    },
-    {
-      name: 'mainImage',
-      title: 'Main Image',
-      type: 'image',
-      options: { hotspot: true },
     },
   ],
 };

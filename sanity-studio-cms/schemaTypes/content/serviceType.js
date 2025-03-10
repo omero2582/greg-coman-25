@@ -23,7 +23,15 @@ export default {
       title: 'Main Image',
       type: 'image',
       description: 'Preview Image shown in /services',
-      options: { hotspot: true }
+      options: { hotspot: true },
+      fields: [
+        {
+          name: 'caption',
+          title: 'Caption',
+          type: 'string',
+          description: 'Optional caption for the image',
+        }
+      ],
     },
     {
       name: 'description',
@@ -46,6 +54,14 @@ export default {
       type: 'image',
       description: 'Image shown alongside description text',
       options: { hotspot: true },
+      fields: [
+        {
+          name: 'caption',
+          title: 'Caption',
+          type: 'string',
+          description: 'Optional caption for the image',
+        }
+      ],
     },
     {
       name: 'images',
@@ -54,13 +70,13 @@ export default {
       of: [
         {
           type: 'image',
+          options: { hotspot: true },
           fields: [
             {
               name: 'caption',
               title: 'Caption',
               type: 'string',
               description: 'Optional caption for the image',
-              options: { hotspot: true },
             }
           ],
         },
