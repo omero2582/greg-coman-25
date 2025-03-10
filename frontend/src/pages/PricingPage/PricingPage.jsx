@@ -104,7 +104,7 @@ const PricingPage = () => {
    */
   const packageDetails = {
     engagement: {
-      title: "Engagement Portrait Session",
+      title: "Wedding Service",
       subtitle: "Capturing Special Moments with your Sweetheart!",
       time: "1 hr 30 min",
       price: "$375",
