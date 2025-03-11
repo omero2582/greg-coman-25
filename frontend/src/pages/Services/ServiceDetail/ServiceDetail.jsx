@@ -12,11 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { builder } from '@/sanity-cms/sanityClient';
-
-
-const urlFor = (source) =>
-  builder.image(source);
+import { urlFor } from '@/sanity-cms/sanityClient';
 
 export default function ServiceDetail() {
   const serviceSlug = validator.escape(useParams().serviceSlug);

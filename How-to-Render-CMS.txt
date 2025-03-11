@@ -1,0 +1,120 @@
+Actual Documentation is in these links:
+https://www.sanity.io/learn/course/day-one-with-sanity-studio/prerequisites
+https://github.com/tailwindlabs/tailwindcss-typography
+https://www.npmjs.com/package/@portabletext/react
+
+Can also refer to ServiceDetail.jsx
+
+
+=== TEXT ===
+- To render text, it will come from Sanity CMS as either 'string' or
+Portable Text, depending on our schema fields.
+
+1. strings
+You can render these normally however you want, for ex:
+<p className="">{myFieldName}</p>
+
+2. PortableText (Rich Text)
+This is text from the Rich text editor that comes from the CMS. Its purpose is
+to allow the user to input bolds, italics, lists, links, and heading elements.
+To render these you need at minimum something like this:
+
+`
+<div className='prose prose-black'>
+  <PortableText value={descriptionRaw} />
+</div>
+`
+
+https://www.npmjs.com/package/@portabletext/react
+<Portable Text/> converts our CMS response (its a big array with a lot of objects)
+Into correspoinding HTML tags like <p>, <h1>, <strong>, <em>, and other  
+
+https://github.com/tailwindlabs/tailwindcss-typography
+The prose class comes from the tailwind/typography plugin that we
+npm installed. Its purpose is to apply the stylings to visuall make bolds bold,
+italics Italic, numbered lists numbered lists. Without it, they wont look like how
+they are supposed to, because tailwind normally removes all these styles
+
+One Big problem though, is that prose has very strict style you might not want,
+so to customize this, you can either:
+
+i. Apply styles directly to the div like:
+`
+<div className='prose space-y-2 leading-normal'>
+  <PortableText value={descriptionRaw} />
+</div>
+`
+
+ii. And/Or apply 'prose-' classes on top of the regular prose class, for ex:
+
+`
+<div className='prose prose-xl prose-black space-y-2 leading-normal'>
+  <PortableText value={descriptionRaw} />
+</div>
+`
+
+To customize the elements, you can also use prose- classes
+`
+<div className='prose prose-a:no-underline prose-black prose-lg'>
+  <PortableText 
+    value={selectedPackage.location}
+  />
+</div>
+`
+
+To customize the elements, you can also use PortableText "components" prop
+`
+<div className='prose prose-a:no-underline prose-black prose-lg'>
+  <PortableText 
+    value={selectedPackage.location}
+    components={{
+      marks: {
+        link: ({ value, children }) => (
+          <a
+            href={value?.href || "#"}
+            target="_blank" // Opens in new tab
+            rel="noopener noreferrer" // Security best practices
+            // className="text-blue-500 underline"
+          >
+            {children}
+          </a>
+        )
+      }
+      }}
+  />
+</div>
+`
+
+
+
+=== images ==
+To get an image URL fromt he field that Sanity CMS reutrns, you can use
+`
+import { urlFor } from '@/sanity-cms/sanityClient';
+`
+
+Then do something like
+`
+< img 
+  src={urlFor(myCMSImageUrl)?.url()} 
+  className='h-[360px] rounded-md'
+/>
+`
+
+This has a lot of options like reversing, cropping, etc, for ex
+`urlFor(i)?.width(550).height(310).url()`
+BUT this lowers the quality from my experience.... so its not good for our photographer website
+
+I have also tried
+`urlFor(i)?.width(550).height(310).quality(100).url()`
+But this also lowered quality.
+
+If you can find a way to reduce image aspect ratio and keep quality, then go for it,
+but I havent found the way
+===
+
+Also note, I added an optional caption field to all image schema fields,
+so in the future we should extract this so we can add an 'alt' tag to
+each of our images like
+<img alt={myCaptionFromCMS} />
+`
