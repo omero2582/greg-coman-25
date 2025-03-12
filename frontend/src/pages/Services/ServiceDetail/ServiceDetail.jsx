@@ -37,7 +37,7 @@ export default function ServiceDetail() {
           <h1 className='text-[57px] text-brandBlue-800 leading-[1] uppercase'>
             {name}
           </h1>
-          <p className='text-[1.25rem] text-brandTeal-800'>{caption}</p>
+          {caption && <p className='text-[1.25rem] text-brandTeal-800'>{caption}</p>}
         </div>
         <MyCarousel imagesRaw={images}/>
         <About descriptionRaw={description} descriptionImageRaw={descriptionImage}/>

@@ -59,6 +59,10 @@
 }
 
 @theme {
+  --breakpoint-xs: 30rem;
+}
+
+@theme {
   
   --color-brandBlue-600: #1B699A;
   --color-brandBlue-800: #1E376C;

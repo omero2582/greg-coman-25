@@ -1,8 +1,8 @@
-import awardsType from "./content/awardsType";
+import awardType from "./content/awardType";
 import companyType from "./content/companyType";
 import photographerType from "./content/photographerType";
 import serviceType from "./content/serviceType";
-import testimonialsType from "./content/testimonialsType";
+import testimonialType from "./content/testimonialType";
 import globalType from "./global/globalType";
 import aboutPageType from "./pages/aboutPageType";
 import blogsPageType from "./pages/blogsPageType";
@@ -24,8 +24,8 @@ export const schemaTypes = [
   // Content
   // Done Content
   serviceType,
-  testimonialsType,
-  awardsType,
+  testimonialType,
+  awardType,
 
   // Not Done Content
   photographerType,

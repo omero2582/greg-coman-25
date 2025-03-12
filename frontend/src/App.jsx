@@ -8,6 +8,7 @@ import Testimonials from './pages/Testimonials/Testimonials';
 import PricingPage from './pages/PricingPage/PricingPage';
 import ServiceDetail from './pages/Services/ServiceDetail/ServiceDetail';
 import Services from './pages/Services/Services';
+import About from './pages/About/About';
 
 export default function App() {
 
@@ -17,6 +18,7 @@ export default function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About/>} />
         <Route path="/testimonials" element={<Testimonials/>} />
         <Route path="/pricing" element={<PricingPage/>}/>
         <Route path="/services" element={<Services/>} />

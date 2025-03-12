@@ -1,8 +1,8 @@
 import {} from '@sanity/icons'
 
 export default {
-  name: 'testimonials',
-  title: 'Testimonials',
+  name: 'testimonial',
+  title: 'Testimonial',
   type: 'document',
   fields: [
     { name: 'name', title: 'Name', type: 'string', description: "Client's Name" },
@@ -74,7 +74,7 @@ export default {
       return {
         title,
         subtitle,
-        media: media[0]
+        media: media ? media[0] : undefined
       }
     }
   },
