@@ -11,6 +11,7 @@ export default function Navbar() {
         <ul className=" text-[24px] grid grid-flow-col justify-center">
           {[
             ['Home', '/'],
+            ['About', '/about'],
             ['Services', '/services'],
             ['Pricing', '/pricing'],
             ['Testimonials', '/testimonials'],

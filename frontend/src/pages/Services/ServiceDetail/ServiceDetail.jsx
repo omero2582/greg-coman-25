@@ -111,8 +111,8 @@ function Packages({packagesRaw}){
         <button 
           key={p.name}
           onClick={() => setSelectedTab(p.name)}
-          className={`tracking-wide relative text-[1.2rem] px-4 py-1  hover:bg-brandBlue-800
-            ${p.name === selectedTab ? ' text-stone-100 bg-brandBlue-800' : 'text-stone-200 bg-brandBlue-900 '}
+          className={`tracking-wide relative text-[1.2rem] px-4 py-1  hover:bg-brandBlue-900
+            ${p.name === selectedTab ? ' text-stone-100 bg-brandBlue-900' : 'text-stone-200 bg-brandBlue-800 '}
             `}
         >
           {p.name}
