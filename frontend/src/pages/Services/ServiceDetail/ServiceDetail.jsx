@@ -31,7 +31,7 @@ export default function ServiceDetail() {
 
   //bg-[#FFFCF9]
   return (
-      <div className='max-w-[1440px] mx-auto w-full grid bg-zinc-50 justify-center'>
+      <div className='pb-5 max-w-[1440px] mx-auto w-full grid bg-zinc-50 justify-center'>
         {/**leading-[72px] */}
         <div className='mx-auto mt-4 mb-[12px] grid justify-items-center'>
           <h1 className='text-[57px] text-brandBlue-800 leading-[1] uppercase'>
@@ -111,8 +111,8 @@ function Packages({packagesRaw}){
         <button 
           key={p.name}
           onClick={() => setSelectedTab(p.name)}
-          className={`tracking-wide relative text-[1.2rem] px-4 py-1  hover:bg-brandBlue-900
-            ${p.name === selectedTab ? ' text-stone-100 bg-brandBlue-900' : 'text-stone-200 bg-brandBlue-800 '}
+          className={`tracking-wide relative text-[1.2rem] px-4 py-1  hover:bg-brandBlue-700
+            ${p.name === selectedTab ? ' text-stone-100 bg-brandBlue-700' : 'text-stone-200 bg-brandBlue-800 '}
             `}
         >
           {p.name}

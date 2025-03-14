@@ -66,6 +66,7 @@
   
   --color-brandBlue-600: #1B699A;
   --color-brandBlue-800: #1E376C;
+  --color-brandBlue-700: hsl(221, 57%,  37%); /*made this up, darker shade of above*/
   --color-brandBlue-900: hsl(221, 57%,  17%); /*made this up, darker shade of above*/
   --color-brandTeal-500: #00A79D;
   --color-brandTeal-700: #05839D;

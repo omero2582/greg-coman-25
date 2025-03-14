@@ -26,7 +26,7 @@ export default function About() {
   
 
   return (
-    <div className='px-[10px] max-w-[1440px] mx-auto w-full grid justify-items-center bg-zinc-50 justify-center'>
+    <div className='pb-5 px-[10px] max-w-[1440px] mx-auto w-full grid justify-items-center bg-zinc-50 justify-center'>
       <Story name={name} about={about} imagesMain={imagesMain} images={images}/>
       <Awards awards={awards}/>
       <About2 about2={about2}/>
@@ -126,17 +126,17 @@ function About2({ about2 }){
 }
 
 function About3({about3}){
-  const { images, description } = about3;
+  const { images, description, title } = about3;
 
   return (
-    <div className='max-w-[900px] w-full grid gap-x-6 grid-flow-col grid-cols-[auto_1fr]'>
+    <div className='max-w-[900px] w-full grid gap-x-6 sm:grid-flow-col sm:grid-cols-[auto_1fr] '>
       <img
         src={urlFor(images[0]).url()}
-        className="rounded-md max-h-[400px] max-w-[360px] w-auto object-cover"
+        className=" justify-self-center rounded-md max-h-[400px] max-w-[360px] w-auto object-cover"
       />
       <div className=''>
-        <h2 className='text-brandBlue-800 mb-4 text-[2.5rem] text-center'>
-          FUN FACTS ABOUT ME!
+        <h2 className='sm:mt-0 mt-8 text-brandBlue-800 mb-4 text-[2.5rem] text-center'>
+          {title}
         </h2>
         <div className='max-w-full  prose prose-xl prose-black leading-normal'>
           <PortableText value={description} />
