@@ -79,7 +79,7 @@
 
 a {
   font-weight: 500;
-  color: #00a79d;
+  color: #4c4c4c;
   /* color: #535bf2; */
 }
 a:hover {
@@ -90,14 +90,11 @@ a:hover {
 button {
   background-color: #1b699a;
   color: white;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {
   display: none;
-}
-
-button {
-  cursor: pointer;
 }
 
 h1,
