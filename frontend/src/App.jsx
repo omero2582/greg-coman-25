@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from "react-router";
-
 import Home from './pages/Home/Home';
-import Navbar from "./components/ui/navbar";
-import Footer from "./components/ui/Footer";
+import Navbar from './layout/Navbar';
+import Footer from './layout/Footer';
 import Headshots from './pages/Services/old-unused/Headshots/Headshots';
 import Testimonials from './pages/Testimonials/Testimonials';
 import PricingPage from './pages/PricingPage/PricingPage';
@@ -12,6 +11,7 @@ import Services from './pages/Services/Services';
 import About from './pages/About/About';
 
 export default function App() {
+
   return (
     <BrowserRouter>
       <div className='grid grid-rows-[auto_1fr_auto] min-h-[100vh] items-start'>
@@ -28,8 +28,8 @@ export default function App() {
         {/*below to be removed*/}
         <Route path="/headshots" element={<Headshots />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
       </div>
     </BrowserRouter>
-  );
+  )
 }

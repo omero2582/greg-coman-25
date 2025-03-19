@@ -1,4 +1,4 @@
-@import "./assets/fonts/fonts.css";
+@import './assets/fonts/fonts.css';
 
 @plugin 'tailwindcss-animate';
 
@@ -7,9 +7,8 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  font-family: "Cronos Pro Caption", "Roboto", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Cronos Pro Caption', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; */
   /* line-height: 1.5; */
   font-weight: 400;
@@ -72,38 +71,28 @@
   --color-brandTeal-500: #00A79D;
   --color-brandTeal-700: #05839D;
   --color-brandTeal-800: hsl(190.26, 93.83%, 25%); /*made this up, darker shade of above*/
-
   --color-brandBlack: #333333;
 }
 
 a {
   font-weight: 500;
-  color: #4c4c4c;
+  color: #05839D;
   /* color: #535bf2; */
+  
 }
 a:hover {
-  color: #03746d;
+  color: #00A79D;
   /* color: #646cff; */
+
 }
 
 button {
-  background-color: #1b699a;
-  color: white;
   cursor: pointer;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: "Cronos Pro Display", "Roboto", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+h1, h2, h3, h4, h5 {
+  font-family: 'Cronos Pro Display', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-weight: 700;
 }
 
