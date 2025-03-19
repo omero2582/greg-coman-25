@@ -60,20 +60,19 @@
 }
 
 @theme {
-  --color-brandBlue-600: #1b699a;
-  --color-brandBlue-800: #1e376c;
-  --color-brandBlue-900: hsl(
-    221,
-    57%,
-    17%
-  ); /*made this up, darker shade of above*/
-  --color-brandTeal-500: #00a79d;
-  --color-brandTeal-700: #05839d;
-  --color-brandTeal-800: hsl(
-    190.26,
-    93.83%,
-    25%
-  ); /*made this up, darker shade of above*/
+  --breakpoint-xs: 30rem;
+}
+
+@theme {
+  
+  --color-brandBlue-600: #1B699A;
+  --color-brandBlue-800: #1E376C;
+  --color-brandBlue-700: hsl(221, 57%,  37%); /*made this up, darker shade of above*/
+  --color-brandBlue-900: hsl(221, 57%,  17%); /*made this up, darker shade of above*/
+  --color-brandTeal-500: #00A79D;
+  --color-brandTeal-700: #05839D;
+  --color-brandTeal-800: hsl(190.26, 93.83%, 25%); /*made this up, darker shade of above*/
+
   --color-brandBlack: #333333;
 }
 

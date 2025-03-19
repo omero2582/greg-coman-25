@@ -2,6 +2,7 @@ help - https://www.sanity.io/learn/course/day-one-with-sanity-studio/prerequisit
 our data - https://gregcoman.sanity.studio/
 
 Important:
+- Make sure to set CORS origin  https://www.sanity.io/manage/personal/project/lcjb8vd6/api#cors-origins
 sanity-studio-cms is a React App provided by sanity
 
 1. To run:
