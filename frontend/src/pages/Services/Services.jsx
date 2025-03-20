@@ -178,7 +178,7 @@ const services = [
       "Professional real estate photography to showcase properties at their best for listings and marketing.",
     packages: [],
     image: RealEstateImage,
-    linkTo: "/services/real-estate",
+    linkTo: "/services/realestate",
   },
   {
     id: "workshops",
