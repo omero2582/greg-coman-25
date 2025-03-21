@@ -1,0 +1,176 @@
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceOnce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotateFloat {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(5deg) translateY(-15px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+}
+
+/* Apply animations */
+.animate-title {
+  animation: titleAnimation 1s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-bounce-once {
+  animation: bounceOnce 1s ease-out;
+}
+
+.animate-slide-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+/* Floating buttons */
+.floating-button {
+  animation: float 6s ease-in-out infinite;
+  z-index: 20;
+}
+
+/* Additional styling */
+.photo-frame {
+  border-radius: 8px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.photo-container:nth-child(odd) .photo-frame {
+  transform: rotate(-1deg);
+}
+
+.photo-container:nth-child(even) .photo-frame {
+  transform: rotate(1deg);
+}
+
+.photo-container:hover .photo-frame {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.photo-wrapper {
+  aspect-ratio: 4 / 3;
+}
+
+/* Decorative elements */
+.decorative-circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+  z-index: -1;
+  animation: rotateFloat 15s ease-in-out infinite;
+}
+
+.decorative-square {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 30px;
+  bottom: -50px;
+  left: -50px;
+  z-index: -1;
+  animation: rotateFloat 20s ease-in-out infinite reverse;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .photo-container {
+    margin-bottom: 1rem;
+  }
+
+  .decorative-circle,
+  .decorative-square {
+    opacity: 0.1;
+  }
+}
+
+img {
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
