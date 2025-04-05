@@ -30,11 +30,11 @@ import Skreets4 from "./assets/skreets4.png";
 import Skreets5 from "./assets/skreets5.png";
 
 // Interactive floating button component
-const FloatingButton = ({ icon, color, position, onClick }) => {
+const FloatingButton = ({ icon, color, hover, position, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`floating-button absolute ${position} bg-${color}-500 hover:bg-${color}-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110`}
+      className={`floating-button absolute ${position} ${color} ${hover} text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110`}
     >
       {icon}
     </button>
@@ -48,7 +48,7 @@ const Photo = ({ image, link, category }) => {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="photo-container transform transition-all duration-500"
+      className="!text-(--color-brandBlack-old) hover:!text-(--color-brandTeal-old) photo-container transform transition-all duration-500"
     >
       <div
         className={`photo-frame bg-white p-3 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border-t-4 border-${getCategoryColor(
@@ -319,21 +319,24 @@ const FineArts = () => {
         {/* Floating interactive elements */}
         <FloatingButton
           icon={<span className="text-xl">❤️</span>}
-          color="red"
+          color= 'bg-red-500'
+          hover="hover:bg-red-600"
           position="top-0 right-0 md:top-4 md:right-4"
           onClick={() => setLikeCount((prev) => prev + 1)}
         />
 
         <FloatingButton
           icon={<span className="text-xl">ℹ️</span>}
-          color="blue"
+          color="bg-blue-500"
+          hover="hover:bg-blue-600"
           position="top-0 left-0 md:top-4 md:left-4"
           onClick={() => setShowInfo(!showInfo)}
         />
 
         <FloatingButton
           icon={<span className="text-xl">🔄</span>}
-          color="green"
+          color="bg-green-500"
+          hover="hover:bg-green-600"
           position="bottom-20 right-0 md:bottom-4 md:right-4"
           onClick={() => {
             const categories = Object.keys(photosByCategory);

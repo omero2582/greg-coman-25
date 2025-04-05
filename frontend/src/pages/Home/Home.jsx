@@ -101,7 +101,7 @@ export default function Home() {
             </h1>
           </div>
           <div>
-            <button className="text-white px-8 py-2 rounded-full bg-[#08586A] hover:bg-[#03746D] transition-colors duration-200 transform hover:scale-105">
+            <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105">
               Book Now
             </button>
           </div>
@@ -114,10 +114,10 @@ export default function Home() {
           className="h-28 md:h-40"
           alt="Greg Coman Photography Logo"
         />
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center text-[#05839D]">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center text-(--color-brandTeal-700)">
           CAPTURING YOUR MOMENTS
         </h2>
-        <div className="text-[#05839D] max-w-xl text-center">
+        <div className="text-(--color-brandTeal-700) max-w-xl text-center">
           <strong>
             WE PROVIDE PROFESSIONAL PHOTOGRAPHY SERVICES FOR ALL YOUR
             PHOTOGRAPHY WORTHY NEEDS -
@@ -152,7 +152,7 @@ export default function Home() {
               range of clients.
             </div>
             <div>
-              <button className="text-white px-8 py-2 rounded-full bg-[#08586A] hover:bg-[#03746D] transition-colors duration-200 transform hover:scale-105">
+              <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105">
                 Get To Know Greg
               </button>
             </div>
@@ -175,7 +175,7 @@ export default function Home() {
       {/* Packages Section */}
       <div className="py-16 w-full flex flex-col justify-center items-center space-y-8 px-4">
         <div className="w-full flex flex-col justify-center items-center space-y-4">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center text-[#05839D]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center text-(--color-brandTeal-700)">
             CHECK OUT OUR PACKAGES!
           </h2>
           <div className="max-w-2xl text-center text-gray-700">
@@ -183,7 +183,7 @@ export default function Home() {
             and stunning portraits that celebrate community, culture, and
             connection! Let us know how you want your story to be captured.
           </div>
-          <button className="text-white px-8 py-2 rounded-full bg-[#08586A] hover:bg-[#03746D] transition-colors duration-200 transform hover:scale-105 mt-2">
+          <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105 mt-2">
             Let's Connect
           </button>
         </div>
@@ -197,7 +197,7 @@ export default function Home() {
                 className="h-[300px] w-[225px] md:h-[350px] md:w-[250px] object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
               />
             </div>
-            <div className="uppercase text-[#05839D] font-medium">
+            <div className="uppercase text-(--color-brandTeal-700) font-medium">
               HEADSHOTS
             </div>
           </div>
@@ -209,7 +209,7 @@ export default function Home() {
                 className="h-[300px] w-[225px] md:h-[350px] md:w-[250px] object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
               />
             </div>
-            <div className="uppercase text-[#05839D] font-medium">FAMILY</div>
+            <div className="uppercase text-(--color-brandTeal-700) font-medium">FAMILY</div>
           </div>
           <div className="flex flex-col items-center space-y-2 hover:font-bold cursor-pointer">
             <div>
@@ -219,7 +219,7 @@ export default function Home() {
                 className="h-[300px] w-[225px] md:h-[350px] md:w-[250px] object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
               />
             </div>
-            <div className="uppercase text-[#05839D] font-medium">
+            <div className="uppercase text-(--color-brandTeal-700) font-medium">
               ENGAGEMENT & WEDDING
             </div>
           </div>
@@ -231,7 +231,7 @@ export default function Home() {
                 className="h-[300px] w-[225px] md:h-[350px] md:w-[250px] object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
               />
             </div>
-            <div className="uppercase text-[#05839D] font-medium">EVENTS</div>
+            <div className="uppercase text-(--color-brandTeal-700) font-medium">EVENTS</div>
           </div>
         </div>
 
@@ -271,47 +271,44 @@ export default function Home() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-6 mt-4">
-          <div className="bg-[#77AACA] w-full max-w-[250px] flex flex-col space-y-4 items-center py-8 px-6 rounded-lg shadow-xl border border-[#1E376C] text-start hover:shadow-2xl transition-all duration-200 ease-in-out cursor-pointer">
-            <div className="text-[#1E376C] w-full text-3xl">STEP 1:</div>
+          {[
+            {
+              name: 'CHOOSE YOUR PACKAGE',
+              description: `Let's talk about what YOU are looking for! Don't see one yet?
+                Contact me and let's discuss.`
+            },
+            {
+              name: 'BOOK THE SESSION',
+              description: `Lock in the session you want, pay the booking fee and we can plan
+              all the stunning photos you want to see!`
+            },
+            {
+              name: 'PHOTOSHOOT DAY',
+              description: `Let me take care of the rest! Just show up and enjoy the
+              experience. I will make sure your best angles are captured!`
+            },
+            {
+              name: 'CHOOSE YOUR PHOTOS',
+              description: `In about a week, view your photos through a link to Pic-Time. Now
+              all you need to do is select your favorites.`
+            }
+          ].map(({name, description}, i) => (
+            <div className="bg-[#77AACA] w-full max-w-[250px] flex flex-col space-y-4 items-center py-8 px-6 rounded-lg shadow-xl border border-[#1E376C] text-start hover:shadow-2xl transition-all duration-200 ease-in-out cursor-pointer">
+            <div className="text-[#1E376C] w-full text-3xl">
+              STEP {i+1}:
+            </div>
             <div className="text-[#1E376C] w-full text-xl">
-              CHOOSE YOUR PACKAGE
+              {name}
             </div>
             <div className="text-white w-full">
-              Let's talk about what YOU are looking for! Don't see one yet?
-              Contact me and let's discuss.
+              {description}
             </div>
           </div>
-          <div className="bg-[#77AACA] w-full max-w-[250px] flex flex-col space-y-4 items-center py-8 px-6 rounded-lg shadow-xl border border-[#1E376C] text-start hover:shadow-2xl transition-all duration-200 ease-in-out cursor-pointer">
-            <div className="text-[#1E376C] w-full text-3xl">STEP 2:</div>
-            <div className="text-[#1E376C] w-full text-xl">
-              BOOK THE SESSION
-            </div>
-            <div className="text-white w-full">
-              Lock in the session you want, pay the booking fee and we can plan
-              all the stunning photos you want to see!
-            </div>
-          </div>
-          <div className="bg-[#77AACA] w-full max-w-[250px] flex flex-col space-y-4 items-center py-8 px-6 rounded-lg shadow-xl border border-[#1E376C] text-start hover:shadow-2xl transition-all duration-200 ease-in-out cursor-pointer">
-            <div className="text-[#1E376C] w-full text-3xl">STEP 3:</div>
-            <div className="text-[#1E376C] w-full text-xl">PHOTOSHOOT DAY</div>
-            <div className="text-white w-full">
-              Let me take care of the rest! Just show up and enjoy the
-              experience. I will make sure your best angles are captured!
-            </div>
-          </div>
-          <div className="bg-[#77AACA] w-full max-w-[250px] flex flex-col space-y-4 items-center py-8 px-6 rounded-lg shadow-2xl border border-[#1E376C] text-start">
-            <div className="text-[#1E376C] w-full text-3xl">STEP 4:</div>
-            <div className="text-[#1E376C] w-full text-xl">
-              CHOOSE YOUR PHOTOS
-            </div>
-            <div className="text-white w-full">
-              In about a week, view your photos through a link to Pic-Time. Now
-              all you need to do is select your favorites.
-            </div>
-          </div>
+          ))
+          }
         </div>
 
-        <button className="text-white px-8 py-2 rounded-full bg-[#08586A] hover:bg-[#03746D] transition-colors duration-200 transform hover:scale-105 mt-4">
+        <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105 mt-4">
           Book with Greg!
         </button>
       </div>
@@ -425,14 +422,14 @@ export default function Home() {
           Wedding Day So Special And The Photos Are Absolutely Beautiful. We
           Will Treasure Them Forever."
         </div>
-        <button className="text-white px-8 py-2 rounded-full bg-[#08586A] hover:bg-[#03746D] transition-colors duration-200 transform hover:scale-105">
+        <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105">
           Read More Reviews
         </button>
       </div>
 
       {/* Awards Section */}
       <div className="py-16 w-full flex flex-col justify-center items-center space-y-6 px-4">
-        <div className="text-[#05839D] text-xl text-center">
+        <div className="text-(--color-brandTeal-700) text-xl text-center">
           Proud Winner of These Awards for Three Years Straight!
         </div>
         <div className="w-full max-w-5xl flex flex-wrap justify-center gap-4 md:gap-8">
@@ -456,13 +453,13 @@ export default function Home() {
 
       {/* Book with Greg Section */}
       <div className="py-16 w-full flex flex-col justify-center items-center space-y-6 px-4">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center text-[#05839D]">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center text-(--color-brandTeal-700)">
           BOOK WITH GREG TODAY!
         </h2>
-        <div className="text-xl md:text-2xl text-[#05839D]">
+        <div className="text-xl md:text-2xl text-(--color-brandTeal-700)">
           Let's talk about what YOU want!
         </div>
-        <button className="text-white px-8 py-2 rounded-full bg-[#08586A] hover:bg-[#03746D] transition-colors duration-200 transform hover:scale-105 mb-6">
+        <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105 mb-6">
           Book Now
         </button>
         <img

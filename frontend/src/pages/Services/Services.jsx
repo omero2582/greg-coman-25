@@ -95,7 +95,7 @@ const services = [
       },
     ],
     image: FamilyImage,
-    linkTo: "/services/family-portraits",
+    linkTo: "/services/family",
   },
   {
     id: "wedding",
@@ -306,7 +306,7 @@ export default function ServicesPage() {
                       hoveredService === service.id &&
                       expandedService !== service.id
                         ? "text-white font-medium transform translate-x-2"
-                        : "text-[#05839D]"
+                        : "text-(--color-brandTeal-700)"
                     }`}
                   >
                     {service.title}
@@ -314,13 +314,13 @@ export default function ServicesPage() {
 
                   <div className="transition-all duration-500 ease-in-out">
                     {expandedService === service.id ? (
-                      <ChevronDown className="text-[#05839D] transition-transform duration-500" />
+                      <ChevronDown className="text-(--color-brandTeal-700) transition-transform duration-500" />
                     ) : (
                       <ChevronRight
                         className={`transition-all duration-500 ease-in-out ${
                           hoveredService === service.id
                             ? "text-white transform translate-x-2"
-                            : "text-[#05839D]"
+                            : "text-(--color-brandTeal-700)"
                         }`}
                       />
                     )}
@@ -344,7 +344,7 @@ export default function ServicesPage() {
                             style={{ animationDelay: `${index * 100}ms` }}
                           >
                             <div className="flex justify-between items-center mb-4">
-                              <h3 className="text-xl font-medium text-[#05839D]">
+                              <h3 className="text-xl font-medium text-(--color-brandTeal-700)">
                                 {pkg.name}
                               </h3>
                               <span className="text-xl font-bold text-[#1A689A]">
@@ -354,13 +354,13 @@ export default function ServicesPage() {
                             <ul className="space-y-2">
                               {pkg.features.map((feature, idx) => (
                                 <li key={idx} className="flex items-start">
-                                  <span className="text-[#05839D] mr-2">•</span>
+                                  <span className="text-(--color-brandTeal-700) mr-2">•</span>
                                   <span>{feature}</span>
                                 </li>
                               ))}
                             </ul>
                             <button
-                              className="mt-6 w-full py-2 bg-[#08586A] text-white rounded-full hover:bg-[#03746D] transition-all duration-300 transform hover:scale-[1.02]"
+                              className="mt-6 w-full py-2 bg-(--color-brandBlue-600) text-white rounded-full transition-all duration-300 transform hover:scale-[1.02]"
                               onClick={() =>
                                 (window.location.href = service.linkTo)
                               }
@@ -371,7 +371,7 @@ export default function ServicesPage() {
                         ))
                       ) : (
                         <button
-                          className="mt-6 w-max py-2 px-10 bg-[#08586A] text-white rounded-full hover:bg-[#03746D] transition-all duration-300 transform hover:scale-[1.02]"
+                          className="mt-6 w-max py-2 px-10 bg-(--color-brandBlue-600) text-white rounded-full transition-all duration-300 transform hover:scale-[1.02]"
                           onClick={() =>
                             (window.location.href = service.linkTo)
                           }
@@ -407,7 +407,7 @@ export default function ServicesPage() {
             Contact us today to discuss your photography needs and schedule your
             session. We're looking forward to capturing your special moments!
           </p>
-          <button className="px-8 py-3 bg-white text-[#05839D] rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 font-medium">
+          <button className="px-8 py-3 bg-white text-(--color-brandTeal-700) rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 font-medium">
             Contact Greg
           </button>
         </div>
