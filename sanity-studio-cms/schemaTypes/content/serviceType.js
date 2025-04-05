@@ -6,6 +6,12 @@ export default {
   title: 'Service',
   type: 'document',
   fields: [
+    {
+      title: 'Visible',
+      name: 'isVisible',
+      description: 'Set to visible when you want this service to be accessible accross all pages',
+      type: 'boolean'
+    },
     { name: 'name', title: 'Name', type: 'string', },
     {
       name: 'slug',
@@ -17,6 +23,7 @@ export default {
         .error(`Required to generate a page on the website`),
       hidden: ({document}) => !document?.name,
     },
+
     { name: 'caption', title: 'Caption', type: 'string', },
     { 
       name: 'mainImage',

@@ -139,6 +139,71 @@ export default {
       
     },
     {
+      name: 'images',
+      title: 'Images Collage',
+      description: 'Collage of Images shown towards the bottom',
+      type: 'array',
+      of: [{ 
+        type: 'image',
+        options: { hotspot: true },
+        fields: [
+          {
+            name: 'caption',
+            title: 'Caption',
+            type: 'string',
+            description: 'Optional caption for the image',
+          }
+        ],
+       }],
+    },
+    {
+      name: 'aboutSection2', title: 'About Section 2', type: 'array', 
+      description: 'Section below collage, and above awards',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', title: 'Title', type: 'string' },
+            { name: 'description', title: 'Description', type: 'array',
+              of: [
+                { type: 'block' },
+              ] 
+            },
+            {
+              name: 'images',
+              title: 'Images',
+              type: 'array',
+              of: [
+                {
+                  type: 'image',
+                  options: { hotspot: true },
+                  fields: [
+                    {
+                      name: 'caption',
+                      title: 'Caption',
+                      type: 'string',
+                      description: 'Optional caption for the image',
+                    }
+                  ],
+                },
+              ],
+            },
+            { name: 'title2', title: 'Title 2', type: 'array',
+              of: [
+                { type: 'block' },
+              ] 
+            },
+            { name: 'description2', title: 'Description 2', type: 'array',
+              of: [
+                { type: 'block' },
+              ] 
+            },
+            { name: 'buttonText', title: 'Button Text', type: 'string' },
+          ],
+        }
+      ]
+    },
+    {
       name: 'testimonialSection', title: 'Testimonial Section', type: 'array', 
       description: 'Main testimonial. Section is towards the bottom',
       of: [
@@ -178,24 +243,6 @@ export default {
           ],
         }
       ]
-    },
-    {
-      name: 'images',
-      title: 'Images Collage',
-      description: 'Collage of Images shown towards the bottom',
-      type: 'array',
-      of: [{ 
-        type: 'image',
-        options: { hotspot: true },
-        fields: [
-          {
-            name: 'caption',
-            title: 'Caption',
-            type: 'string',
-            description: 'Optional caption for the image',
-          }
-        ],
-       }],
     },
   ],
 };

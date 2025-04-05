@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 
  export const useServiceQuery = (service) => {
    
-  const query = `*[_type == "service" && slug.current == "${service}"][0]`;
+  const query = `*[_type == "service" && slug.current == "${service}" && isVisible == true][0]`;
   const fetchService = async () => {  
     const data = await client.fetch(query);
     return data;
@@ -25,7 +25,7 @@ export const useServicesAllQuery = () => {
   const queryClient = useQueryClient();
   
   const fetchMySearches = async () => {
-    const query = `*[_type == "service"]`;
+    const query = `*[_type == "service && isVisible == true"]`;
     const data = await client.fetch(query);
 
 
