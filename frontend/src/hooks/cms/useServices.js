@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 // import axios from "axios";
 
- export const useServiceQuery = (service) => {
+ export const useServiceQuery = (service, options = {}) => {
    
   const query = `*[_type == "service" && slug.current == "${service}" && isVisible == true][0]`;
   const fetchService = async () => {  
@@ -14,14 +14,13 @@ import { useNavigate } from "react-router";
   return useQuery({
     queryKey: ["service", service],
     queryFn: fetchService,
-    refetchOnWindowFocus: false,
-    // staleTime: 1000 * 20, 
-    retry: false,
+    // staleTime: 1000 * 20,
+    ...options,
   })
 }
 
 
-export const useServicesAllQuery = () => {
+export const useServicesAllQuery = (options = {}) => {
   const queryClient = useQueryClient();
   
   const fetchMySearches = async () => {
@@ -41,9 +40,8 @@ export const useServicesAllQuery = () => {
   return useQuery({
     queryFn: fetchMySearches,
     queryKey: ["services"],
-    refetchOnWindowFocus: false,
     // staleTime: 1000 * 20,
-    retry: false,
+    ...options,
   })
 
 }

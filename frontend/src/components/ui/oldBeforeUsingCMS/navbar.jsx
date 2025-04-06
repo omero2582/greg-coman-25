@@ -6,11 +6,10 @@ import LogoNav from "@/assets/Logo_nav.svg";
 import { Link } from "react-router";
 import { FaLink } from "react-icons/fa6";
 import { useGlobal } from "@/hooks/cms/useGlobals";
-import { urlFor } from "@/sanity-cms/sanityClient";
 
 const Navbar = () => {
-  const { data, error, isPending, isFetching } =  useGlobal();
-  console.log('global', data);
+  // const { data, error, isPending, isFetching } =  useGlobal();
+  // console.log('global', data);
   
   const [scrolled, setScrolled] = useState(false);
 
@@ -54,47 +53,59 @@ const Navbar = () => {
       >
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <img
-            src={data?.logo ? urlFor(data.logo)?.url() : LogoNav}
-            alt="Logo for Greg Coman Photography"
-            className="h-8"
-          />
+          <div className="flex-shrink-0">
+            <img src={LogoNav} alt="Gregory's Logo" className="h-8" />
+          </div>
 
           <div className="flex items-center gap-8">
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
-            {data?.navbar?.links?.map(({label, path}, i) => (
+            {[
+              ['Home', '/'],
+              ['About', '/about'],
+              ['Services', '/services'],
+              ['Fine Arts', '/finearts'],
+              ['Contact', '/contact'],
+              // ['Pricing', '/pricing'],
+              // ['Testimonials', '/testimonials'],
+            ].map(([title, url]) => (
               <Link
-                key={i}
-                to={path}
+                to={url}
                 className="!text-(--color-brandBlack-old) hover:!text-(--color-brandTeal-old) transition-colors duration-200 font-medium text-sm"
               >
-                {label}
+                {title}
               </Link>
             ))}
             </div>
 
             {/* Book Now Button */}
-            {data?.navbar?.buttonText && 
-            <button className="bg-(--color-brandBlue-600) !text-white !font-[400] px-10 py-2 rounded-full border border-[#08586A]  transition-colors duration-200 transform hover:scale-105">
-              {data?.navbar?.buttonText}
-            </button>}
+            <div className="hidden md:block">
+              <button className="bg-(--color-brandBlue-600) text-white px-10 py-2 rounded-full border border-[#08586A]  transition-colors duration-200 transform hover:scale-105">
+                Book Now
+              </button>
+            </div>
           </div>
-
           {/* Social Media Icons */}
           <div className="hidden md:flex items-center space-x-4 ml-6">
-            {data?.socials?.links?.map(({label, url}, i) => (
+            {
+            [{name: 'Instagram', url: 'https://instagram.com'},
+            {name: 'LinkedIn', url: 'https://linkedin.com',},
+            {name: 'Facebook', url: 'https://facebook.com',},
+            {name: 'Twitter', url: 'https://x.com', },
+            {name: 'Email', url: 'mailto:contact@example.com',},
+          ].map(({name, url}) => (
             <a
-              key={i}
-              href={label?.toLowerCase() === 'email' ? `mailto:${url}` : url}
-              aria-label={label}
+              href={url}
+              aria-label={name}
               target="_blank"
               rel="noopener noreferrer"
               className="!text-(--color-brandBlack-old) hover:!text-(--color-brandTeal-old) transition-colors duration-200"
             >
-              {getIconComponent(label) || getIconComponent('default')}
+              {getIconComponent(name) || getIconComponent('default')}
             </a>
-          ))}
+          ))
+          }
+            
           </div>
 
           {/* Mobile menu button */}

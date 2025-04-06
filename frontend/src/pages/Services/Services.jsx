@@ -243,7 +243,7 @@ export default function ServicesPage() {
       <div className="bg-[#8DB5CE] pt-40 py-16 md:py-24 md:pt-40">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               OUR SERVICES
             </h1>
             <p className="text-white text-lg md:text-xl max-w-3xl mx-auto">
@@ -302,7 +302,7 @@ export default function ServicesPage() {
 
                 <div className="flex items-center relative z-20 px-4">
                   <h2
-                    className={`text-2xl md:text-3xl font-light flex-grow transition-all duration-500 ease-in-out ${
+                    className={`text-2xl md:text-3xl flex-grow transition-all duration-500 ease-in-out ${
                       hoveredService === service.id &&
                       expandedService !== service.id
                         ? "text-white font-medium transform translate-x-2"
@@ -400,7 +400,7 @@ export default function ServicesPage() {
       {/* Call to Action */}
       <div className="bg-[#8DB5CE] py-16 mb-8">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
+          <h2 className="text-3xl md:text-4xl text-white mb-6">
             READY TO BOOK YOUR SESSION?
           </h2>
           <p className="text-white text-lg mb-8 max-w-2xl mx-auto">

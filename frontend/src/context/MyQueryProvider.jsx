@@ -20,17 +20,18 @@ export const MyQueryProvider = ({children}) => {
       onSuccess: (data) => {
       }
     }),
+    
     defaultOptions: {
       queries: {
-        // staleTime = ms until data is considered stale & remounting component will refetch
-        staleTime: 1000 * 20, 
+        staleTime: 1000 * 20, // staleTime = ms until data is considered stale & remounting component will refetch
         retry: false,
+        retryOnMount: false,
+        refetchOnWindowFocus: false,
         // gcTime: 1000 * 60 * 60 * 24, 
-        // This is garbage collection time. staleTime is prob what youre looking for instead
+        // 24 hours. This is garbage collection time. staleTime is prob what youre looking for instead
       },
       mutations: {
-        retry: false,
-        staleTime: 1000 * 20,
+        retry: false
       }
     }
   })
@@ -46,6 +47,10 @@ export const MyQueryProvider = ({children}) => {
       client={queryClient}
       persistOptions={{
         persister,
+        maxAge: 5 * 60 * 1000,  // needs to be equal or higher than staleTime, for staleTime to work.
+        // Otherwise this will discard the data before staletime  
+        // maxAge will make sure to discard data BEFORE displaying the cache
+        // if maxAge is not set like this, then even if it is stale, there will be 1 render that will display the prev data before it refetches 
         dehydrateOptions: {
           shouldDehydrateQuery: (query) => {
             // this funcion returns a boolean, which determines whether the query should be persisted into localStorage

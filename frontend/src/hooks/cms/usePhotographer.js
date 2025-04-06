@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 // import axios from "axios";
 
- export const usePhotographerQuery = (photographer) => {
+ export const usePhotographerQuery = (photographer, options = {}) => {
    
   const query = `*[_type == "photographer" && slug.current == "${photographer}"][0]`;
   const fetchService = async () => {  
@@ -14,13 +14,12 @@ import { useNavigate } from "react-router";
   return useQuery({
     queryKey: ["photographer", photographer],
     queryFn: fetchService,
-    refetchOnWindowFocus: false,
-    // staleTime: 1000 * 20, 
-    retry: false,
+    // staleTime: 1000 * 20,
+    ...options,
   })
 }
 
-export const usePhotographerFirstQuery = () => {
+export const usePhotographerFirstQuery = (options = {}) => {
    
   const query = `*[_type == "photographer"][0]{
     ...,
@@ -34,9 +33,8 @@ export const usePhotographerFirstQuery = () => {
   return useQuery({
     queryKey: ["photographer", "greg-coman"],
     queryFn: fetchService,
-    refetchOnWindowFocus: false,
-    // staleTime: 1000 * 20, 
-    retry: false,
+    // staleTime: 1000 * 20,
+    ...options,
   })
 }
 

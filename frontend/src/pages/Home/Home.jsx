@@ -19,163 +19,53 @@ import Eventsjpg from "./assets/Eventsjpg.jpg";
 import Weddingjpg from "./assets/Weddingjpg.jpg";
 import Headshotjpg from "./assets/Headshotjpg.jpg";
 
-// Collage Images
-import Collage1 from "./assets/Collage1.jpg";
-import Collage2 from "./assets/Collage2.jpg";
-import Collage3 from "./assets/Collage3.jpg";
-import Collage4 from "./assets/Collage4.jpg";
-import Collage5 from "./assets/Collage5.jpg";
-import Collage6 from "./assets/Collage6.jpg";
-import Collage7 from "./assets/Collage7.jpg";
-import Collage8 from "./assets/Collage8.jpg";
-import Collage9 from "./assets/Collage9.jpg";
-import Collage10 from "./assets/Collage10.jpg";
-import Collage11 from "./assets/Collage11.jpg";
-import Collage12 from "./assets/Collage12.jpg";
-import Collage13 from "./assets/Collage13.jpg";
-import Collage14 from "./assets/Collage14.jpg";
-import Collage15 from "./assets/Collage15.jpg";
-import Collage16 from "./assets/Collage16.jpg";
-import Collage17 from "./assets/Collage17.jpg";
-import Collage18 from "./assets/Collage18.jpg";
-
 // Awards Images
 import Award1 from "./assets/Award1.png";
 import Award2 from "./assets/Award2.jpg";
 import Award3 from "./assets/Award3.jpg";
 
-// Importing the footer logo
-import NPSImage from "./assets/NPSlogo.png";
-import PPOCImage from "./assets/ppoc.png";
-
-// Import icons for footer
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
-
-const photos = [
-  { src: Collage1 },
-  { src: Collage2 },
-  { src: Collage3 },
-  { src: Collage4 },
-  { src: Collage5 },
-  { src: Collage6 },
-  { src: Collage7 },
-  { src: Collage8 },
-  { src: Collage9 },
-  { src: Collage10 },
-  { src: Collage11 },
-  { src: Collage12 },
-  { src: Collage13 },
-  { src: Collage14 },
-  { src: Collage15 },
-  { src: Collage16 },
-  { src: Collage17 },
-  { src: Collage18 },
-];
+import { usePage } from "@/hooks/cms/usePage";
+import { urlFor } from "@/sanity-cms/sanityClient";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Spinner } from "@/components/ui/Spinner";
+import { PortableText } from "@portabletext/react";
 
 export default function Home() {
+  const { data, error, isPending, isFetching } =  usePage('homePage');
+  console.log('homepage', data);
+  
+  const photos = data?.images.map(i => urlFor(i)?.url());
+
+  function splitArrayInHalf(arr) {
+    const middle = Math.ceil(arr.length / 2);
+    const firstHalf = arr.slice(0, middle);
+    const secondHalf = arr.slice(middle);
+    return [firstHalf, secondHalf];
+  }
+
+  if(isPending){
+    return <div className="min-h-[100vh] flex justify-center">
+        <Spinner size="xl" className="text-neutral-400">
+          <span className="text-[1.2rem] pt-[4px]">Loading...</span>
+        </Spinner>
+      </div>
+  }
+
   return (
     <div className="flex flex-col items-center justify-center h-full overflow-auto overflow-x-hidden">
-      {/* Hero Section */}
-      <div
-        className="h-dvh w-full flex relative justify-center items-center"
-        style={{
-          backgroundImage: `url(${HeroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="flex flex-col items-center space-y-6 px-4">
-          <div className="text-white text-3xl md:text-4xl lg:text-5xl text-center font-light max-w-3xl">
-            <h1
-              className="leading-tight"
-              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}
-            >
-              CAPTURE YOUR MEMORIES WITH GREG COMAN PHOTOGRAPHY!
-            </h1>
-          </div>
-          <div>
-            <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105">
-              Book Now
-            </button>
-          </div>
-        </div>
-      </div>
-      {/* Logo and Tagline Section */}
-      <div className="py-16 w-full flex justify-center items-center flex-col space-y-6 px-4">
-        <img
-          src={LogoNav || "/placeholder.svg"}
-          className="h-28 md:h-40"
-          alt="Greg Coman Photography Logo"
-        />
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center text-(--color-brandTeal-700)">
-          CAPTURING YOUR MOMENTS
-        </h2>
-        <div className="text-(--color-brandTeal-700) max-w-xl text-center">
-          <strong>
-            WE PROVIDE PROFESSIONAL PHOTOGRAPHY SERVICES FOR ALL YOUR
-            PHOTOGRAPHY WORTHY NEEDS -
-          </strong>
-          <span>
-            both around YOUR LIFE, and YOUR BUSINESS. Our philosophy is quality
-            over quantity, fast delivery and a personal and creative approach.
-            After all, it's really about YOU.
-          </span>
-        </div>
-      </div>
-
-      {/* Hey It's Greg Section */}
-      <div className="w-full flex justify-center items-center py-20">
-        <div className="flex flex-col md:flex-row bg-[#8DB5CE] w-full justify-center items-center px-4 md:px-8 lg:px-20 py-16 relative">
-          <div className="flex flex-col space-y-4 w-full md:w-1/2 max-w-xl px-4 md:px-8 z-10">
-            <h2 className="text-4xl md:text-5xl text-white font-light">
-              HEY IT'S GREG
-            </h2>
-            <div className="text-white">
-              My passion for photography started early, inspired by my father's
-              slideshow photos of our family vacations made possible through his
-              job at Air Canada. At 17, I received my first camera - an Olympus
-              QM10 - and I trekked across Europe with it.
-              <br />
-              <br />
-              With over <strong>50 years of experience</strong>, including{" "}
-              <strong>10+ years professionally.</strong> I took a leap of faith
-              in 2014 to start my photography business, building a modest studio
-              and never looking back. I've worked as a school portrait,
-              automobile, and sports photographer, collaborating with a diverse
-              range of clients.
-            </div>
-            <div>
-              <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105">
-                Get To Know Greg
-              </button>
-            </div>
-          </div>
-          <div className="hidden md:flex w-1/2 justify-center relative h-96">
-            <img
-              src={MeetGreg || "/placeholder.svg"}
-              alt="Greg Coman"
-              className="absolute top-[-100px] right-[20%] h-[300px] w-[250px] object-cover rounded-xl z-10 shadow-lg"
-            />
-            <img
-              src={MeetGreg1 || "/placeholder.svg"}
-              alt="Greg Coman Photography"
-              className="absolute top-[-50px] right-[50%] h-[200px] w-[200px] object-cover rounded-xl shadow-lg"
-            />
-          </div>
-        </div>
-      </div>
-
+      {data?.heroSection[0] && 
+      <Hero data={data.heroSection[0]}/>}
+      {data?.introSection[0] && 
+      <Intro data={data.introSection[0]}/>}
+      {data?.aboutSection[0] && 
+      <About data={data.aboutSection[0]}/>}
+      
+      
       {/* Packages Section */}
       <div className="py-16 w-full flex flex-col justify-center items-center space-y-8 px-4">
         <div className="w-full flex flex-col justify-center items-center space-y-4">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center text-(--color-brandTeal-700)">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-center text-(--color-brandTeal-700)">
             CHECK OUT OUR PACKAGES!
           </h2>
           <div className="max-w-2xl text-center text-gray-700">
@@ -237,7 +127,7 @@ export default function Home() {
 
         <div className="w-full max-w-5xl flex flex-col md:flex-row bg-[#8DB5CE] rounded-lg items-center justify-between px-6 md:px-10 py-4 mt-8">
           <div className="flex flex-col mb-4 md:mb-0 text-center md:text-left">
-            <div className="text-2xl md:text-3xl text-white font-light">
+            <div className="text-2xl md:text-3xl text-white">
               WE ALSO DO:
             </div>
             <div className="text-white text-sm">
@@ -261,7 +151,7 @@ export default function Home() {
       {/* Easy Process Section */}
       <div className="py-16 w-full flex flex-col justify-center items-center space-y-8 bg-[#8DB5CE] px-4">
         <div className="w-full flex flex-col justify-center items-center space-y-2">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-white font-light text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-white text-center">
             LET'S MAKE IT AN EASY PROCESS
           </h2>
           <div className="text-white text-center">
@@ -293,7 +183,7 @@ export default function Home() {
               all you need to do is select your favorites.`
             }
           ].map(({name, description}, i) => (
-            <div className="bg-[#77AACA] w-full max-w-[250px] flex flex-col space-y-4 items-center py-8 px-6 rounded-lg shadow-xl border border-[#1E376C] text-start hover:shadow-2xl transition-all duration-200 ease-in-out cursor-pointer">
+            <div key={i} className="bg-[#77AACA] w-full max-w-[250px] flex flex-col space-y-4 items-center py-8 px-6 rounded-lg shadow-xl border border-[#1E376C] text-start hover:shadow-2xl transition-all duration-200 ease-in-out cursor-pointer">
             <div className="text-[#1E376C] w-full text-3xl">
               STEP {i+1}:
             </div>
@@ -314,25 +204,28 @@ export default function Home() {
       </div>
 
       {/* Photo Gallery Section */}
+      {photos?.length > 0 && 
       <div className="py-16 w-full flex flex-col space-y-8 justify-center items-center">
+        {splitArrayInHalf(photos).map((half, i) => (
         <Carousel
           plugins={[
             Autoplay({
-              delay: 2000,
+              delay: i < 1 ? 2000 : 1500,
             }),
           ]}
           className="w-full max-w-7xl px-4"
         >
           <CarouselContent className="flex gap-4">
-            {photos.slice(0, 9).map((photo, index) => (
+            {half.map((photo, index) => (
               <CarouselItem
                 key={index}
                 className="flex-shrink-0 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4 flex justify-center"
               >
                 <img
-                  src={photo.src || "/placeholder.svg"}
+                  loading="lazy"
+                  src={photo || "/placeholder.svg"}
                   className="h-64 md:h-80 w-full object-cover rounded-lg"
-                  alt={`Gallery image ${index + 1}`}
+                  alt={`Gallery images ${i < 1 ? 'First' : 'Second'} Half`}
                 />
               </CarouselItem>
             ))}
@@ -340,38 +233,14 @@ export default function Home() {
           <CarouselPrevious className="left-2" />
           <CarouselNext className="right-2" />
         </Carousel>
-
-        <Carousel
-          plugins={[
-            Autoplay({
-              delay: 1500,
-            }),
-          ]}
-          className="w-full max-w-7xl px-4"
-        >
-          <CarouselContent className="flex gap-4">
-            {photos.slice(9).map((photo, index) => (
-              <CarouselItem
-                key={index}
-                className="flex-shrink-0 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4 flex justify-center"
-              >
-                <img
-                  src={photo.src || "/placeholder.svg"}
-                  className="h-64 md:h-80 w-full object-cover rounded-lg"
-                  alt={`Gallery image ${index + 10}`}
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-2" />
-          <CarouselNext className="right-2" />
-        </Carousel>
-      </div>
+      ))}
+        
+      </div>}
 
       {/* Photography Workshop Section */}
       <div className="py-16 w-full flex flex-col justify-center items-center space-y-8 bg-[#1A689A] px-4">
         <div className="w-full flex flex-col justify-center items-center space-y-2">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-white font-light text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-white text-center">
             WANT TO LEARN PHOTOGRAPHY?
           </h2>
           <div className="text-white text-center max-w-3xl">
@@ -389,7 +258,7 @@ export default function Home() {
           />
 
           <div className="text-white w-full md:w-1/2 max-w-xl">
-            <h3 className="text-xl md:text-2xl font-light mb-4">
+            <h3 className="text-xl md:text-2xl mb-4">
               Book a{" "}
               <span className="bg-[#3C80AB] px-2 py-1">
                 PHOTOGRAPHY WORKSHOP
@@ -417,7 +286,7 @@ export default function Home() {
 
       {/* Testimonial Section */}
       <div className="py-16 w-full flex flex-col justify-center items-center bg-[#8DB5CE] px-4">
-        <div className="max-w-4xl text-center text-white text-xl md:text-2xl italic font-light mb-8 px-4">
+        <div className="max-w-4xl text-center text-white text-xl md:text-2xl italic mb-8 px-4">
           "We Could Not Have Been More Pleased With Greg's Work. He Made Our
           Wedding Day So Special And The Photos Are Absolutely Beautiful. We
           Will Treasure Them Forever."
@@ -453,7 +322,7 @@ export default function Home() {
 
       {/* Book with Greg Section */}
       <div className="py-16 w-full flex flex-col justify-center items-center space-y-6 px-4">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center text-(--color-brandTeal-700)">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl text-center text-(--color-brandTeal-700)">
           BOOK WITH GREG TODAY!
         </h2>
         <div className="text-xl md:text-2xl text-(--color-brandTeal-700)">
@@ -470,4 +339,145 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+{/* Hero Section */}
+function Hero({data = {}}) {
+  const {image, buttonText, title} = data;
+  console.log('hero', urlFor(data.image)?.url())
+  
+  return(
+    <div
+    className="h-dvh w-full flex relative justify-center items-center"
+    // style={{
+    //   backgroundImage: data?.heroSection[0]?.image ? `url(${urlFor(data?.heroSection[0]?.image)?.url()})` : ``,
+    //   // backgroundImage: data?.heroSection[0]?.image ? `url(${urlFor(data?.heroSection[0]?.image)?.url()})` : `url(${HeroImage})`,
+    //   backgroundSize: "cover",
+    //   backgroundPosition: "center",
+    // }}
+  >
+    { image && 
+    <div className="z-[-1] absolute inset-0">
+      <LazyLoadImage
+        placeholderSrc={urlFor(image)?.width(50).height(50).quality(10).url()}
+        src={urlFor(image)?.url()}
+        className="w-full h-full object-cover"
+        wrapperClassName="w-full h-full"
+        effect="blur"
+        />
+    </div>
+    // <img 
+    //   className="z-[-1] absolute object-cover inset-0 h-full w-full" 
+    //   src={urlFor(data?.heroSection[0]?.image)?.url()}
+    // />
+    }
+    <div className="flex flex-col items-center space-y-6 px-4">
+      <h1
+        className="leading-tight text-white text-3xl md:text-4xl lg:text-5xl text-center max-w-3xl"
+        style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}
+      >
+        {title}
+      </h1>
+      {buttonText && 
+      <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105">
+        {buttonText}
+      </button>}
+    </div>
+  </div>
+  )
+}
+
+{/* Logo and Tagline Section */}
+function Intro({data = {}}){
+  const { title, description, image } = data;
+
+  return (
+    <div className="py-16 w-full flex justify-center items-center flex-col space-y-6 px-4">
+    <img
+      loading="lazy"
+      src={ urlFor(image)?.url() || LogoNav}
+      className="h-28 md:h-40"
+      alt="Greg Coman Photography Logo"
+    />
+    <h2 className="text-3xl md:text-4xl lg:text-5xl text-center text-(--color-brandTeal-700)">
+      {title}
+    </h2>
+    {/* <div className="text-(--color-brandTeal-700) max-w-xl text-center">
+      <strong>
+        WE PROVIDE PROFESSIONAL PHOTOGRAPHY SERVICES FOR ALL YOUR
+        PHOTOGRAPHY WORTHY NEEDS -
+      </strong>
+      <span>
+        both around YOUR LIFE, and YOUR BUSINESS. Our philosophy is quality
+        over quantity, fast delivery and a personal and creative approach.
+        After all, it's really about YOU.
+      </span>
+    </div> */}
+    {Array.isArray(description) 
+      && 
+      <div className='max-w-xl text-center prose-color-(--color-brandTeal-700) prose prose-md leading-normal'>
+        <PortableText value={description} />
+      </div>
+      }
+  </div>
+
+  )  
+}
+
+{/* Hey It's Greg Section */}
+function About ({data = {}}) {
+  const {title, description, buttonText, images} = data;
+
+  return (
+    <div className="w-full flex justify-center items-center py-20">
+      <div className="flex flex-col md:flex-row bg-[#8DB5CE] w-full justify-center items-center px-4 md:px-8 lg:px-20 py-16 relative">
+        <div className="flex flex-col space-y-4 w-full md:w-1/2 max-w-xl px-4 md:px-8 z-10">
+          <h2 className="text-4xl md:text-5xl text-white">
+            {title}
+          </h2>
+          {/* <div className="text-white">
+            My passion for photography started early, inspired by my father's
+            slideshow photos of our family vacations made possible through his
+            job at Air Canada. At 17, I received my first camera - an Olympus
+            QM10 - and I trekked across Europe with it.
+            <br />
+            <br />
+            With over <strong>50 years of experience</strong>, including{" "}
+            <strong>10+ years professionally.</strong> I took a leap of faith
+            in 2014 to start my photography business, building a modest studio
+            and never looking back. I've worked as a school portrait,
+            automobile, and sports photographer, collaborating with a diverse
+            range of clients.
+          </div> */}
+          {Array.isArray(description) && 
+          <div className='space-y-2 prose prose-md prose-color-[white] leading-normal'>
+            <PortableText value={description} />
+          </div>
+          }
+          <div>
+            <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105">
+              {buttonText}
+            </button>
+          </div>
+        </div>
+        {images && 
+        <div className="hidden md:flex w-1/2 justify-center relative h-96">
+          <img
+            loading="lazy"
+            src={urlFor(images[0])?.url() || MeetGreg }
+            alt="Greg Coman"
+            className="absolute h-[300px] w-[250px] object-cover rounded-xl shadow-lg"
+          />
+          <img
+            loading="lazy"
+            src={urlFor(images[1])?.url() || MeetGreg1}
+            alt="Greg Coman Photography"
+            className="z-10 bottom-[0px] right-[0%] absolute h-[200px] w-[200px] object-cover rounded-xl shadow-lg"
+          />
+        </div>
+        }
+      </div>
+    </div>
+
+  )
 }
