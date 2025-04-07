@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import CarouselImages from "./CarouselImages";
-import BookingProcess from "../../components/ui/BookingProcess";
+import BookingProcess from "../../components/oldBeforeAddingHomeToCMS/BookingProcess";
+import Booking from "@/components/Booking";
+import Steps from "@/components/Steps";
 
 /** 
  * A modal component that displays full service details:
@@ -537,8 +539,8 @@ const PricingPage = () => {
         </div>
         </div>
 
-        <BookingProcess />
       </section>
+      <Steps/>
 
       {/* ========== MODALS ========== */}
       <InfoModal

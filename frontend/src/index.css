@@ -86,7 +86,7 @@
     color: var(--color-brandTeal-700);
   }
   a:hover {
-    color: #00A79D;
+    color: var(--color-brandTeal-500);
   }
   
   button {

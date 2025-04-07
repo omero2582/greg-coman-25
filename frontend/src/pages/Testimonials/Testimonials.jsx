@@ -1,6 +1,7 @@
 import React from "react";
-import Awards from "../../components/ui/Awards";
-import BookingProcess from "../../components/ui/BookingProcess";
+import BookingProcess from "../../components/oldBeforeAddingHomeToCMS/BookingProcess";
+import Steps from "@/components/Steps";
+import Awards from "@/components/Awards";
 
 const testimonials = [
   {
@@ -74,8 +75,8 @@ const Testimonials = () => {
           </div>
         ))}
       </div>
-      <Awards />
-      <BookingProcess />
+      <Awards/>
+      <Steps />
     </div>
   );
 };

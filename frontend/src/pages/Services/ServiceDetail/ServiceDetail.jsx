@@ -82,15 +82,13 @@ function About({descriptionRaw, descriptionImageRaw}){
   return (
     <div className='px-2 my-18 max-w-[880px] justify-self-center justify-items-center gap-y-6 gap-x-14 grid sm:grid-cols-[auto_max-content]'>
       <div className=' self-center text-[1.25rem] leading-[1.55]'>
-      {Array.isArray(descriptionRaw) 
-      && 
-      <div className='space-y-2 prose prose-xl prose-black leading-normal'>
-        <PortableText value={descriptionRaw} />
+        {descriptionRaw && 
+        <div className='!space-y-6 prose prose-xl prose-black leading-normal'>
+          <PortableText value={descriptionRaw} />
+        </div>}
       </div>
-      }
-      </div>
-        {descriptionImageRaw && 
-      < img 
+      {descriptionImageRaw && 
+      <img 
         src={urlFor(descriptionImageRaw)?.url()} 
         className='h-[360px] sm:order-1  rounded-md'
       />}
@@ -142,9 +140,9 @@ function Packages({packagesRaw}){
                   link: ({ value, children }) => (
                     <a
                       href={value?.href || "#"}
-                      target="_blank" // Opens in new tab
-                      rel="noopener noreferrer" // Security best practices
-                      // className="text-blue-500 underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-(--color-brandTeal-700) hover:text-(--color-brandTeal-500)"
                     >
                       {children}
                     </a>
@@ -156,22 +154,22 @@ function Packages({packagesRaw}){
           </div>
         </div>
         <div className='max-w-full prose prose-lg prose-ul:leading-[1.55] prose-li:my-[0px]  prose-black prose-strong:font-bold prose-p:mb-0 prose-ul:mt-0'>
-          {Array.isArray(selectedPackage.description) && 
-            <PortableText 
-              value={selectedPackage.description} 
-              components={{
-                // marks: {
-                //   strong: ({children}) => <strong className='!font-bold'>{children}</strong>
-                // }
-                // list: {
-                //   bullet: ({children}) => <ul className="list-disc  mb-4">{children}</ul>,
-                //   number: ({children}) => <ol className="list-decimal  mb-4">{children}</ol>,
-                // },
-                // listItem: {
-                //   bullet: ({children}) => <li className='ml-4'>{children}</li>,
-                // }
-              }}
-            />}
+          {selectedPackage.description && 
+          <PortableText 
+            value={selectedPackage.description} 
+            components={{
+              // marks: {
+              //   strong: ({children}) => <strong className='!font-bold'>{children}</strong>
+              // }
+              // list: {
+              //   bullet: ({children}) => <ul className="list-disc  mb-4">{children}</ul>,
+              //   number: ({children}) => <ol className="list-decimal  mb-4">{children}</ol>,
+              // },
+              // listItem: {
+              //   bullet: ({children}) => <li className='ml-4'>{children}</li>,
+              // }
+            }}
+          />}
         </div>
       </div>
     </div>

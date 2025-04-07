@@ -2,8 +2,8 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 
 import Home from './pages/Home/Home';
-import Navbar from "./components/ui/navbar";
-import Footer from "./components/ui/Footer";
+import Navbar from "./layout/navbar";
+import Footer from "./layout/Footer";
 import Headshots from './pages/Services/old-unused/Headshots/Headshots';
 import Testimonials from './pages/Testimonials/Testimonials';
 import PricingPage from './pages/PricingPage/PricingPage';

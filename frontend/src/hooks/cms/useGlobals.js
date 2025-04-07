@@ -5,7 +5,14 @@ import { useNavigate } from "react-router";
 
  export const useGlobal = (options = {}) => {
    
-  const query = `*[_type == "global"][0]`;
+  const query = `
+  *[_type == "global"][0]{
+    ...,
+    awardsSection[]{
+      ...,
+      awards[]->
+    }
+  }`;
   const fetchFn = async () => {  
     const data = await client.fetch(query);
     return data;

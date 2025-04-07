@@ -106,8 +106,8 @@ export default {
       ]
     },
     {
-      name: 'packagesSection',
-      title: 'Packages Section',
+      name: 'servicesSection',
+      title: 'Services Section',
       description: 'Fourth Section from the top',
       type: 'array', 
       of: [
