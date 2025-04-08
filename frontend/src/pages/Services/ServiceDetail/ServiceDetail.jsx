@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/carousel"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { urlFor } from '@/sanity-cms/sanityClient';
+import NavBarSizeAccountFor from '@/components/NavBarSizeAccountFor';
 
 export default function ServiceDetail() {
   const serviceSlug = validator.escape(useParams().serviceSlug);
@@ -31,7 +32,9 @@ export default function ServiceDetail() {
 
   //bg-[#FFFCF9]
   return (
-      <div className='mt-[95px] pb-5 max-w-[1440px] mx-auto w-full grid bg-zinc-50 justify-center'>
+    <>
+      <NavBarSizeAccountFor/>
+      <div className='pb-5 max-w-[1440px] mx-auto w-full grid bg-zinc-50 justify-center'>
         {/**leading-[72px] */}
         <div className='mx-auto mt-4 mb-[12px] grid justify-items-center'>
           {name && 
@@ -45,6 +48,7 @@ export default function ServiceDetail() {
         <About descriptionRaw={description} descriptionImageRaw={descriptionImage}/>
         <Packages packagesRaw={packages}/>
       </div>
+    </>
   )
 }
 

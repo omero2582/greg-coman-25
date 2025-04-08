@@ -15,6 +15,7 @@ import { useNavigate } from "react-router";
   }`;
   const fetchFn = async () => {  
     const data = await client.fetch(query);
+    console.log('global fetch', data)
     return data;
   }
 

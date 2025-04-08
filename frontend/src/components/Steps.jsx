@@ -1,10 +1,12 @@
 import { useGlobal } from '@/hooks/cms/useGlobals';
 import { PortableText } from '@portabletext/react';
 import React from 'react'
+import { useNavigate } from 'react-router';
 
 export default function Steps() {
   const { data, error, isPending, isFetching } =  useGlobal();
-  console.log('Steps', data)
+  const navigate = useNavigate();
+  console.log('Steps')
 
   if(!data?.stepsSection?.[0]){
     return null;
@@ -45,7 +47,10 @@ export default function Steps() {
       </div>}
 
       {buttonText &&
-      <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105 mt-4">
+      <button 
+        className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105 mt-4"
+        onClick={() => navigate('/contact')}
+      >
         {buttonText}
       </button>}
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import BookingProcess from "../../components/oldBeforeAddingHomeToCMS/BookingProcess";
 import Steps from "@/components/Steps";
 import Awards from "@/components/Awards";
+import NavBarSizeAccountFor from "@/components/NavBarSizeAccountFor";
 
 const testimonials = [
   {
@@ -44,6 +45,8 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
+    <>
+    <NavBarSizeAccountFor/>
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-6xl mx-auto text-center">
         <h1 className="text-4xl font-extrabold text-gray-800 mb-4">
@@ -78,6 +81,8 @@ const Testimonials = () => {
       <Awards/>
       <Steps />
     </div>
+    
+    </>
   );
 };
 

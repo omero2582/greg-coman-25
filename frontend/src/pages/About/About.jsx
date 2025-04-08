@@ -1,3 +1,4 @@
+import NavBarSizeAccountFor from '@/components/NavBarSizeAccountFor';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { usePhotographerFirstQuery } from '@/hooks/cms'
 import { urlFor } from '@/sanity-cms/sanityClient';
@@ -26,21 +27,24 @@ export default function About() {
   
 
   return (
-    <div className='pb-5 px-[10px] max-w-[1440px] mx-auto w-full grid justify-items-center bg-zinc-50 justify-center'>
-      <Story name={name} about={about} imagesMain={imagesMain} images={images}/>
-      <Awards awards={awards}/>
-      <About2 about2={about2}/>
-      <About3 about3={about3} />
-      <About4 about4={about4}/>
-    </div>
+    <>
+      <NavBarSizeAccountFor/>
+      <div className='pb-5 px-[10px] max-w-[1440px] mx-auto w-full grid justify-items-center bg-zinc-50 justify-center'>
+        <Story name={name} about={about} imagesMain={imagesMain} images={images}/>
+        <Awards awards={awards}/>
+        <About2 about2={about2}/>
+        <About3 about3={about3} />
+        <About4 about4={about4}/>
+      </div>
+    </>
   )
 }
 
 function Story({name, about, imagesMain, images}){
   return(
     <div className='max-w-[900px]'>
-      <div className='mx-auto mt-4 mb-[16px] grid justify-items-center'>
-        <h1 className='mt-5 text-[57px] text-brandBlue-800 leading-[1]'>
+      <div className='mx-auto mt-9 mb-[16px] grid justify-items-center'>
+        <h1 className='text-[57px] text-brandBlue-800 leading-[1]'>
           {about.title}
         </h1>
       </div>

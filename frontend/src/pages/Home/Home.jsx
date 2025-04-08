@@ -90,7 +90,7 @@ export default function Home() {
 {/* Hero Section */}
 function Hero({data = {}}) {
   const {image, buttonText, title} = data;
-  console.log('hero', urlFor(data.image)?.url())
+  const navigate = useNavigate();
   
   return(
     <div
@@ -120,7 +120,11 @@ function Hero({data = {}}) {
         {title}
       </h1>}
       {buttonText && 
-      <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105">
+      <button 
+        className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105"
+        onClick={() => navigate('/contact')}
+      >
+        
         {buttonText}
       </button>}
     </div>
@@ -158,6 +162,7 @@ function Intro({data = {}}){
 {/* Hey It's Greg Section */}
 function About ({data = {}}) {
   const {title, description, buttonText, images} = data;
+  const navigate = useNavigate();
 
   return (
     <div className="w-full flex justify-center items-center py-20">
@@ -172,7 +177,10 @@ function About ({data = {}}) {
             <PortableText value={description} />
           </div>}
           {buttonText &&
-          <button className="justify-self-start text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105">
+          <button
+            className="justify-self-start text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105"
+            onClick={() => navigate('/about')}
+          >
             {buttonText}
           </button>}
         </div>
@@ -216,7 +224,10 @@ function Services ({data = {}}) {
         <PortableText value={description} />
       </div>}
       {buttonText && 
-      <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105 mt-2">
+      <button 
+        className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105 mt-2"
+        onClick={() => navigate('/contact')}
+      >
         {buttonText}
       </button>}
     </div>
@@ -225,20 +236,20 @@ function Services ({data = {}}) {
     <div className="flex flex-wrap justify-center gap-6 mt-8">
       {services.slice(0, 4).map(s => (
         <div 
-          className="flex flex-col items-center space-y-2 hover:font-bold cursor-pointer ease-in-out transition-all duration-200"
+          className="group flex flex-col items-center space-y-2 cursor-pointer ease-in-out transition-all duration-200"
           onClick={() => navigate(`services/${s?.slug?.current}`)}
         >
           {s?.mainImage &&
           <img
             src={urlFor(s.mainImage)?.url()}
             alt={s?.name}
-            className="h-[300px] w-[225px] md:h-[350px] md:w-[250px] object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+            className="h-[300px] w-[225px] md:h-[350px] md:w-[250px] object-cover rounded-lg opacity-80 group-hover:opacity-100 transition-opacity duration-200"
             loading="lazy"
           />}
           {s?.name && 
-          <div className="uppercase text-(--color-brandTeal-700) font-medium">
-            {s.name.toUpperCase()}
-          </div>}
+          <p className="uppercase text-(--color-brandTeal-700) font-medium group-hover:font-bold">
+            {s.name}
+          </p>}
         </div>
       ))}
     </div>}
@@ -260,8 +271,8 @@ function Services ({data = {}}) {
           s?.name && 
           <Link 
             to={`services/${s?.slug?.current}`}
-            className="font-normal text-black flex items-center px-6 py-1 rounded-full bg-white border border-[#1E376C] hover:cursor-pointer hover:bg-[#e7e1e1] transition-all duration-200">
-            {s.name.toUpperCase()}
+            className="uppercase font-normal text-black flex items-center px-6 py-1 rounded-full bg-white border border-[#1E376C] hover:cursor-pointer hover:bg-[#e7e1e1] transition-all duration-200">
+            {s.name}
           </Link>
         ))}
       </div>
@@ -319,6 +330,7 @@ function Gallery ({data = []}) {
 {/* Photography Workshop Section */}
 function About2 ({data ={}}) {
   const { title, title2, description, description2, images, buttonText } = data;
+  const navigate = useNavigate();
 
   return (
     <div className="py-16 w-full flex flex-col justify-center items-center space-y-8 bg-[#1A689A] px-4">
@@ -359,9 +371,12 @@ function About2 ({data ={}}) {
           <PortableText value={description2} />
         </div>}
         {buttonText &&
-        <div className="mt-6 bg-[#77AACA] w-fit text-white cursor-pointer px-8 py-2 rounded-full border border-[#08586A] hover:bg-[#6b9ab7] transition-colors duration-200">
+        <button
+          className="mt-6 bg-[#77AACA] w-fit text-white cursor-pointer px-8 py-2 rounded-full border border-[#08586A] hover:bg-[#6b9ab7] transition-colors duration-200"
+          onClick={() => navigate('/contact')}
+        >
           {buttonText}
-        </div>}
+        </button>}
       </div>
     </div>
   </div>
@@ -371,6 +386,8 @@ function About2 ({data ={}}) {
 
 function Testimonials ({data = {}}){
   const { title, buttonText } = data;
+  const navigate = useNavigate();
+  
   return (
     <div className="py-16 w-full flex flex-col justify-center items-center bg-[#8DB5CE] px-4">
       {title && 
@@ -378,7 +395,10 @@ function Testimonials ({data = {}}){
         <PortableText value={title} />
       </div>}
       {buttonText && 
-      <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105">
+      <button
+        className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105"
+        onClick={() => navigate('/testimonials')}
+      >
         {buttonText}
       </button>}
     </div>

@@ -2,10 +2,12 @@ import { useGlobal } from '@/hooks/cms/useGlobals';
 import React from 'react'
 import Familyjpg from "../pages/Home/assets/Familyjpg.jpg";
 import { urlFor } from '@/sanity-cms/sanityClient';
+import { useNavigate } from 'react-router';
 
 export default function Booking() {
   const { data, error, isPending, isFetching } =  useGlobal();
-  console.log('Booking', data)
+  const navigate = useNavigate();
+  console.log('Booking')
 
   if(!data?.bookingSection?.[0]){
     return null;
@@ -21,7 +23,10 @@ export default function Booking() {
       <div className="text-xl md:text-2xl text-(--color-brandTeal-700)">
         {subtitle}
       </div>
-      <button className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105 mb-6">
+      <button 
+        className="text-white px-8 py-2 rounded-full bg-(--color-brandBlue-600) transition-colors duration-200 transform hover:scale-105 mb-6"
+        onClick={() => navigate('/contact')}  
+      >
         {buttonText}
       </button>
       {images?.[0] &&

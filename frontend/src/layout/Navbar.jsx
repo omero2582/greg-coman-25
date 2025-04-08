@@ -1,18 +1,16 @@
 
 import React, { useState, useEffect } from "react";
-import { Instagram, Linkedin, Facebook, Mail, Twitter } from "lucide-react";
 import { cn } from "@/lib/utils";
 import LogoNav from "@/assets/Logo_nav.svg";
-import { Link } from "react-router";
-import { FaLink } from "react-icons/fa6";
+import { Link, useNavigate } from "react-router";
 import { useGlobal } from "@/hooks/cms/useGlobals";
 import { urlFor } from "@/sanity-cms/sanityClient";
 import { SocialIcon } from "@/components/SocialIcon";
 
 const Navbar = () => {
   const { data, error, isPending, isFetching } =  useGlobal();
-  console.log('global', data);
-  
+  const navigate = useNavigate();
+
   const [scrolled, setScrolled] = useState(false);
 
   // Add scroll event listener to add shadow on scroll
@@ -28,20 +26,6 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const iconComponents = {
-    instagram: <Instagram size={20}/>,
-    linkedin: <Linkedin size={20}/>,
-    facebook: <Facebook size={20}/>,
-    twitter: <Twitter size={20}/>,
-    x: <Twitter size={20}/>,
-    email: <Mail size={20}/>,
-    default: <FaLink size={20}/>
-  }
-
-  const getIconComponent = (name) => {
-    return iconComponents[name.toLowerCase()];
-  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out p-4">
@@ -79,7 +63,10 @@ const Navbar = () => {
 
             {/* Book Now Button */}
             {data?.navbar?.buttonText && 
-            <button className="bg-(--color-brandBlue-600) !text-white !font-[400] px-10 py-2 rounded-full border border-[#08586A]  transition-colors duration-200 transform hover:scale-105">
+            <button
+              className="bg-(--color-brandBlue-600) !text-white !font-[400] px-10 py-2 rounded-full border border-[#08586A]  transition-colors duration-200 transform hover:scale-105"
+              onClick={() => navigate('/contact')}
+            >
               {data?.navbar?.buttonText}
             </button>}
           </div>

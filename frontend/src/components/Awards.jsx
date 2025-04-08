@@ -9,7 +9,7 @@ import { urlFor } from '@/sanity-cms/sanityClient';
 
 export default function Awards() {
   const { data, error, isPending, isFetching } =  useGlobal();
-  console.log('Awards', data)
+  console.log('Awards')
 
   if(!data?.awardsSection?.[0]){
     return null;
