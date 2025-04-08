@@ -3,9 +3,9 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 // import axios from "axios";
 
- export const usePage = (page, options = {}) => {
+ export const usePage = (page, projection, options = {}) => {
    
-  const query = `*[_type == "${page}"][0]`;
+  const query = `*[_type == "${page}"][0]${projection||''}`;
   const fetchFn = async () => {  
     const data = await client.fetch(query);
     return data;
@@ -18,3 +18,11 @@ import { useNavigate } from "react-router";
     ...options,
   })
 }
+
+export const usePageHome = (options = {}) => usePage('homePage', `{
+    ...,
+    servicesSection[]{
+      ...,
+      services[]->
+    }
+  }`, options);

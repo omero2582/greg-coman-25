@@ -21,7 +21,7 @@ import Headshotjpg from "./assets/Headshotjpg.jpg";
 
 
 
-import { usePage } from "@/hooks/cms/usePage";
+import { usePage, usePageHome } from "@/hooks/cms/usePage";
 import { urlFor } from "@/sanity-cms/sanityClient";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -30,6 +30,7 @@ import { PortableText } from "@portabletext/react";
 import Steps from "@/components/Steps";
 import Booking from "@/components/Booking";
 import Awards from "@/components/Awards";
+import { Link, useNavigate } from "react-router";
 
 function splitArrayInHalf(arr) {
   const middle = Math.ceil(arr.length / 2);
@@ -40,7 +41,7 @@ function splitArrayInHalf(arr) {
 
 
 export default function Home() {
-  const { data, error, isPending, isFetching } =  usePage('homePage');
+  const { data, error, isPending, isFetching } =  usePageHome();
   console.log('homepage', data);
 
 
@@ -200,7 +201,8 @@ function About ({data = {}}) {
 }
 
 function Services ({data = {}}) {
-  const {title, title2, description, description2, buttonText} = data;
+  const {title, title2, description, description2, buttonText, services} = data;
+  const navigate = useNavigate()
 
   return (
     <div className="py-16 w-full flex flex-col justify-center items-center space-y-8 px-4">
@@ -219,53 +221,29 @@ function Services ({data = {}}) {
       </button>}
     </div>
 
+    {services &&
     <div className="flex flex-wrap justify-center gap-6 mt-8">
-      <div className="flex flex-col items-center space-y-2 hover:font-bold cursor-pointer ease-in-out transition-all duration-200">
-        <div>
+      {services.slice(0, 4).map(s => (
+        <div 
+          className="flex flex-col items-center space-y-2 hover:font-bold cursor-pointer ease-in-out transition-all duration-200"
+          onClick={() => navigate(`services/${s?.slug?.current}`)}
+        >
+          {s?.mainImage &&
           <img
-            src={Headshotjpg || "/placeholder.svg"}
-            alt="Headshots"
+            src={urlFor(s.mainImage)?.url()}
+            alt={s?.name}
             className="h-[300px] w-[225px] md:h-[350px] md:w-[250px] object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
-          />
+            loading="lazy"
+          />}
+          {s?.name && 
+          <div className="uppercase text-(--color-brandTeal-700) font-medium">
+            {s.name.toUpperCase()}
+          </div>}
         </div>
-        <div className="uppercase text-(--color-brandTeal-700) font-medium">
-          HEADSHOTS
-        </div>
-      </div>
-      <div className="flex flex-col items-center space-y-2 hover:font-bold cursor-pointer">
-        <div>
-          <img
-            src={Familyjpg || "/placeholder.svg"}
-            alt="Family"
-            className="h-[300px] w-[225px] md:h-[350px] md:w-[250px] object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
-          />
-        </div>
-        <div className="uppercase text-(--color-brandTeal-700) font-medium">FAMILY</div>
-      </div>
-      <div className="flex flex-col items-center space-y-2 hover:font-bold cursor-pointer">
-        <div>
-          <img
-            src={Weddingjpg || "/placeholder.svg"}
-            alt="Engagement & Wedding"
-            className="h-[300px] w-[225px] md:h-[350px] md:w-[250px] object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
-          />
-        </div>
-        <div className="uppercase text-(--color-brandTeal-700) font-medium">
-          ENGAGEMENT & WEDDING
-        </div>
-      </div>
-      <div className="flex flex-col items-center space-y-2 hover:font-bold cursor-pointer">
-        <div>
-          <img
-            src={Eventsjpg || "/placeholder.svg"}
-            alt="Events"
-            className="h-[300px] w-[225px] md:h-[350px] md:w-[250px] object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
-          />
-        </div>
-        <div className="uppercase text-(--color-brandTeal-700) font-medium">EVENTS</div>
-      </div>
-    </div>
+      ))}
+    </div>}
 
+    {services?.length > 4 &&
     <div className="w-full max-w-5xl flex flex-col md:flex-row bg-[#8DB5CE] rounded-lg items-center justify-between px-6 md:px-10 py-4 mt-8">
       <div className="flex flex-col mb-4 md:mb-0 text-center md:text-left">
         {title2 && 
@@ -278,17 +256,16 @@ function Services ({data = {}}) {
         </div>}
       </div>
       <div className="flex flex-wrap justify-center gap-3">
-        <div className="flex items-center px-6 py-1 rounded-full bg-white border border-[#1E376C] hover:cursor-pointer hover:bg-[#e7e1e1] transition-all duration-200">
-          PRODUCTS
-        </div>
-        <div className="flex items-center px-6 py-1 rounded-full bg-white border border-[#1E376C] hover:cursor-pointer hover:bg-[#e7e1e1] transition-all duration-200">
-          SPORTS
-        </div>
-        <div className="flex items-center px-6 py-1 rounded-full bg-white border border-[#1E376C] hover:cursor-pointer hover:bg-[#e7e1e1] transition-all duration-200">
-          REAL ESTATE
-        </div>
+        {services.slice(4, 7).map(s => (
+          s?.name && 
+          <Link 
+            to={`services/${s?.slug?.current}`}
+            className="font-normal text-black flex items-center px-6 py-1 rounded-full bg-white border border-[#1E376C] hover:cursor-pointer hover:bg-[#e7e1e1] transition-all duration-200">
+            {s.name.toUpperCase()}
+          </Link>
+        ))}
       </div>
-    </div>
+    </div>}
   </div>
   )
 }

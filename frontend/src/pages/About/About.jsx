@@ -71,7 +71,11 @@ function MyCarousel({imagesRaw}){
         {images.map((img, i) => (
           <CarouselItem  key={i} className="pl-2 sm:basis-1/2">
           {/*<AspectRatio ratio={2 / 3}> */}
-            <img src={img} className="rounded-md h-[360px] w-auto object-cover" />
+            <img
+              src={img}
+              className="rounded-md h-[360px] w-auto object-cover"
+              loading='lazy'
+            />
           {/* </AspectRatio>*/}
           </CarouselItem>
         ))}
@@ -94,6 +98,7 @@ function Awards({awards}) {
           key={a.name || i}
           src={urlFor(a.images[0]).url()}
           className="rounded-md h-[160px] w-auto object-cover"
+          loading='lazy'
         />
     ))}
   </div>
@@ -115,6 +120,7 @@ function About2({ about2 }){
           <img
             src={urlFor(images[0]).url()}
             className=" rounded-md max-w-[400px] max-h-[360px] object-cover"
+            loading='lazy'
           />
         </div>
         <div className=' max-w-full  prose prose-xl prose-black leading-normal'>
@@ -133,6 +139,7 @@ function About3({about3}){
       <img
         src={urlFor(images[0]).url()}
         className=" justify-self-center rounded-md max-h-[400px] max-w-[360px] w-auto object-cover"
+        loading='lazy'
       />
       <div className=''>
         <h2 className='sm:mt-0 mt-8 text-brandBlue-800 mb-4 text-[2.5rem] text-center'>
@@ -160,6 +167,7 @@ function About4({about4}){
             key={i}
             src={urlFor(img).url()}
             className="rounded-sm h-[260px] w-auto object-cover"
+            loading='lazy'
           />
         ))}
       </div>

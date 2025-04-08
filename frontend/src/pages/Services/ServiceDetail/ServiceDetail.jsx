@@ -31,13 +31,15 @@ export default function ServiceDetail() {
 
   //bg-[#FFFCF9]
   return (
-      <div className='pb-5 max-w-[1440px] mx-auto w-full grid bg-zinc-50 justify-center'>
+      <div className='mt-[95px] pb-5 max-w-[1440px] mx-auto w-full grid bg-zinc-50 justify-center'>
         {/**leading-[72px] */}
         <div className='mx-auto mt-4 mb-[12px] grid justify-items-center'>
+          {name && 
           <h1 className='text-[57px] text-brandBlue-800 leading-[1] uppercase'>
             {name}
-          </h1>
-          {caption && <p className='text-[1.25rem] text-brandTeal-800'>{caption}</p>}
+          </h1>}
+          {caption && 
+          <p className='text-[1.25rem] text-brandTeal-800'>{caption}</p>}
         </div>
         <MyCarousel imagesRaw={images}/>
         <About descriptionRaw={description} descriptionImageRaw={descriptionImage}/>
@@ -52,6 +54,10 @@ export default function ServiceDetail() {
 
 function MyCarousel({imagesRaw}){
   // const images = imagesRaw.map(i => urlFor(i)?.width(550).height(310).url())
+  if(!imagesRaw){
+    return null
+  }
+
   const images = imagesRaw.map(i => urlFor(i)?.url())
 
   return (
@@ -65,7 +71,12 @@ function MyCarousel({imagesRaw}){
         {images.map((img, i) => (
           <CarouselItem  key={i} className="pl-2 flex-none">
           {/*<AspectRatio ratio={2 / 3}> */}
-            <img src={img} alt={`${i}-headshot-img`} className="rounded-md h-[360px] w-auto object-cover" />
+            <img 
+              src={img}
+              alt={`${i}-headshot-img`}
+              className="rounded-md h-[360px] w-auto object-cover"
+              loading='lazy'
+            />
           {/* </AspectRatio>*/}
           </CarouselItem>
         ))}
@@ -81,14 +92,15 @@ function About({descriptionRaw, descriptionImageRaw}){
 
   return (
     <div className='px-2 my-18 max-w-[880px] justify-self-center justify-items-center gap-y-6 gap-x-14 grid sm:grid-cols-[auto_max-content]'>
+      {descriptionRaw && 
       <div className=' self-center text-[1.25rem] leading-[1.55]'>
-        {descriptionRaw && 
         <div className='!space-y-6 prose prose-xl prose-black leading-normal'>
           <PortableText value={descriptionRaw} />
-        </div>}
-      </div>
+        </div>
+      </div>}
       {descriptionImageRaw && 
       <img 
+        loading='lazy'
         src={urlFor(descriptionImageRaw)?.url()} 
         className='h-[360px] sm:order-1  rounded-md'
       />}
@@ -98,7 +110,11 @@ function About({descriptionRaw, descriptionImageRaw}){
 
 
 function Packages({packagesRaw}){
-  const [selectedTab, setSelectedTab] = useState(packagesRaw[0].name);
+  const [selectedTab, setSelectedTab] = useState(packagesRaw?.[0].name);
+
+  if(!packagesRaw){
+    return null
+  }
 
   const selectedPackage = packagesRaw.find(p => p.name === selectedTab)
 
@@ -106,6 +122,7 @@ function Packages({packagesRaw}){
     <div className='px-2 max-w-[880px] w-full justify-self-center '>
       <div>
         {packagesRaw.map(p => (
+        p?.name && 
         <button 
           key={p.name}
           onClick={() => setSelectedTab(p.name)}
@@ -121,17 +138,21 @@ function Packages({packagesRaw}){
       </div>
       <div className='text-[1.15rem] '>
         <div className='mt-[10px] mb-[8px] leading-[1.3]'>
+          {selectedPackage?.name && 
           <h2 className='font-bold text-[1.5rem]'>
             {selectedPackage.name}
-          </h2>
+          </h2>}
           
-          <h3 className='text-[1.15rem] italic'>{selectedPackage.caption}</h3>
+          {selectedPackage?.caption && 
+          <h3 className='text-[1.15rem] italic'>{selectedPackage.caption}</h3>}
           <div className='text-[1.13rem] grid grid-flow-col justify-start items-center'>
-            {`${selectedPackage.price} | ${selectedPackage.duration} | `}
+            {selectedPackage?.price && `${selectedPackage.price} | `}
+            {selectedPackage?.duration && `${selectedPackage.duration} | `}
             {/* <a href={`http://maps.google.com/?q=${selectedPackage.location.label}`}> */}
             {/* <a target='_blank' href={selectedPackage.location.url}>
               {selectedPackage.location.label}
             </a> */}
+            {selectedPackage?.location &&
             <div className='ml-[2px] -mt-[1px] prose prose-a:no-underline prose-black prose-lg leading-1'>
               <PortableText 
                 value={selectedPackage.location}
@@ -150,11 +171,11 @@ function Packages({packagesRaw}){
                 }
                 }}
               />
-            </div>
+            </div>}
           </div>
         </div>
+        {selectedPackage?.description && 
         <div className='max-w-full prose prose-lg prose-ul:leading-[1.55] prose-li:my-[0px]  prose-black prose-strong:font-bold prose-p:mb-0 prose-ul:mt-0'>
-          {selectedPackage.description && 
           <PortableText 
             value={selectedPackage.description} 
             components={{
@@ -169,8 +190,8 @@ function Packages({packagesRaw}){
               //   bullet: ({children}) => <li className='ml-4'>{children}</li>,
               // }
             }}
-          />}
-        </div>
+          />
+        </div>}
       </div>
     </div>
   )
