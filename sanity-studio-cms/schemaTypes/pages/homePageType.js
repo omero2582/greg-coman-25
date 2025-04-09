@@ -123,7 +123,7 @@ export default {
             {
               name: 'services',
               title: 'Services',
-              description: 'Services displayed. The first 4 will be on the main display with picture, the rest will be displayed as text at the bottom',
+              description: 'Services displayed. The first 4 will be on the main display with picture, the next 3 will be displayed as text at the bottom',
               type: 'array',
               of: [{ type: 'reference', to: [{ type: 'service' }] }]
             },

@@ -14,6 +14,7 @@ import {
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { urlFor } from '@/sanity-cms/sanityClient';
 import NavBarSizeAccountFor from '@/components/NavBarSizeAccountFor';
+import { Spinner } from '@/components/ui/Spinner';
 
 export default function ServiceDetail() {
   const serviceSlug = validator.escape(useParams().serviceSlug);
@@ -21,11 +22,19 @@ export default function ServiceDetail() {
   const {data, isPending, isLoading, error} = useServiceQuery(serviceSlug);
 
   if(isPending){
-    return <div>Loading..</div>
+    return <div className="min-h-[100vh] flex justify-center">
+        <Spinner size="xl" className="text-neutral-400">
+          <span className="text-[1.2rem] pt-[4px]">Loading...</span>
+        </Spinner>
+      </div>
   }
 
   if(error || !data){
-    return <div>Service Not Found</div>
+    return <div className="min-h-[60vh] grid place-content-center">
+      <span className="text-[1.6rem] pt-[4px]">
+        Service Not Found
+      </span>
+  </div>
   }
 
   const { name, caption, description, descriptionImage, images, slug, packages } = data

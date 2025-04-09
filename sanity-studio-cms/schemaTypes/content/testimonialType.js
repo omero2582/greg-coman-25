@@ -12,15 +12,17 @@ export default {
     { name: 'reviewDate', title: 'Review Date', type: 'date' },
     { name: 'reviewUrl', title: 'Review URL', type: 'string', description: "Link to Review" },
     { 
-      name: 'description',
-      title: 'Full Descrption',
+      name: 'descriptionShort',
+      title: 'Short Descrption',
+      description: 'Shown as the visible text on Testimonials page',
       type: 'array',
       of: [
         { type: 'block' }] 
     },
     { 
-      name: 'descriptionShort',
-      title: 'Short Descrption',
+      name: 'description',
+      title: 'Full Descrption',
+      description: 'Not shown currently in Testimonials page. Above field "Short Description" is what is currently shown in Testimonials page',
       type: 'array',
       of: [
         { type: 'block' }] 

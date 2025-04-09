@@ -443,8 +443,46 @@ const PricingPage = () => {
           </div>
         </div>
 
-   {/* FAQ Section */}
-   <div className="bg-white p-6 md:p-8 rounded-xl shadow-md">
+      <FAQComponent/>
+
+      </section>
+      <Steps/>
+
+      {/* ========== MODALS ========== */}
+      <InfoModal
+        isOpen={Boolean(openModal === "engagement")}
+        onClose={closeModal}
+        service={packageDetails.engagement}
+      />
+      <InfoModal
+        isOpen={Boolean(openModal === "business")}
+        onClose={closeModal}
+        service={packageDetails.business}
+      />
+      <InfoModal
+        isOpen={Boolean(openModal === "family")}
+        onClose={closeModal}
+        service={packageDetails.family}
+      />
+      <InfoModal
+        isOpen={Boolean(openModal === "portfolio")}
+        onClose={closeModal}
+        service={packageDetails.portfolio}
+      />
+      <InfoModal
+        isOpen={Boolean(openModal === "event")}
+        onClose={closeModal}
+        service={packageDetails.event}
+      />
+    </main>
+  );
+};
+
+export default PricingPage;
+
+export function FAQComponent () {
+  return (
+    <div className="bg-white p-6 md:p-8 rounded-xl shadow-md">
       <h2 className="text-3xl font-bold text-gray-800 mb-4">
         Frequently Asked Questions
       </h2>
@@ -536,40 +574,7 @@ const PricingPage = () => {
             the best image of yourself!
           </p>
         </div>
-        </div>
-        </div>
-
-      </section>
-      <Steps/>
-
-      {/* ========== MODALS ========== */}
-      <InfoModal
-        isOpen={Boolean(openModal === "engagement")}
-        onClose={closeModal}
-        service={packageDetails.engagement}
-      />
-      <InfoModal
-        isOpen={Boolean(openModal === "business")}
-        onClose={closeModal}
-        service={packageDetails.business}
-      />
-      <InfoModal
-        isOpen={Boolean(openModal === "family")}
-        onClose={closeModal}
-        service={packageDetails.family}
-      />
-      <InfoModal
-        isOpen={Boolean(openModal === "portfolio")}
-        onClose={closeModal}
-        service={packageDetails.portfolio}
-      />
-      <InfoModal
-        isOpen={Boolean(openModal === "event")}
-        onClose={closeModal}
-        service={packageDetails.event}
-      />
-    </main>
-  );
-};
-
-export default PricingPage;
+      </div>
+    </div>
+  )
+}

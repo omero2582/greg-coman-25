@@ -38,10 +38,11 @@ export default function Footer() {
           {/* Certification Logos */}
           {logos && 
           <div className="flex space-x-4 mb-6 md:mb-0">
-            {logos.map(l => (
+            {logos.map((l, i) => (
               <img
                 src={urlFor(l)?.url()}
                 className="h-12"
+                key={i}
               />
             ))}
             {/* alt="Photography Certification"
@@ -51,12 +52,13 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {linkColumns &&
-          linkColumns.map(col => (
-            <div className="flex flex-col space-y-2">
-              {col?.links?.map((l, i) => (
+          linkColumns.map((col, i) => (
+            <div key={i} className="flex flex-col space-y-2">
+              {col?.links?.map((l, j) => (
                 <Link 
                   to={l.path}
-                  className={`${i > 0 && 'font-normal'} !text-(--color-brandBlue-800) hover:underline  w-fit cursor-pointer`}
+                  className={`${j > 0 && 'font-normal'} !text-(--color-brandBlue-800) hover:underline  w-fit cursor-pointer`}
+                  key={j}
                 >
                   {l.label}
                 </Link>
@@ -66,14 +68,15 @@ export default function Footer() {
 
           <div className="flex flex-col space-y-2">
           {contactInfo &&
-            contactInfo.map(c => (
-              <div>
+            contactInfo.map((c, i) => (
+              <div key={i}>
                 {c?.title &&
                 <p className="font-medium">{c.title}</p>}
                 {c?.description &&
-                <div className='
-                prose-a:font-normal prose-a:no-underline prose-a:hover:underline
-                max-w-3xl !space-y-2 prose prose-color-(--color-brandBlue-800) leading-normal'>
+                <div 
+                  className='prose-a:font-normal prose-a:no-underline prose-a:hover:underline
+                  max-w-3xl !space-y-2 prose prose-color-(--color-brandBlue-800) leading-normal'
+                >
                   <PortableText value={c.description} />
                 </div>}
               </div>
@@ -81,13 +84,14 @@ export default function Footer() {
              {/* Social Media Icons */}
              {socials?.links &&
               <div className="flex space-x-3 mt-2">
-                {socials.links.map(l => (
+                {socials.links?.map(l => (
                 <a 
                   className="border text-(---color-brandBlue-800) border-(--color-brandBlue-800) rounded-full p-1.5"
                   href={l.label?.toLowerCase() === 'email' ? `mailto:${l.url}` : l.url}
                   aria-label={l.label}
                   target="_blank"
                   rel="noopener noreferrer"
+                  key={l.label}
                 >  
                   <SocialIcon name={l.label} size={16}/>
                 </a>))}

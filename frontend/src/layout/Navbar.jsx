@@ -40,11 +40,15 @@ const Navbar = () => {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           {data?.logo &&
-          <img
-            src={urlFor(data.logo)?.url() || LogoNav}
-            alt="Logo for Greg Coman Photography"
-            className="h-8"
-          />}
+          <Link to='/'>
+            <img
+              src={urlFor(data.logo)?.url() || LogoNav}
+              alt="Logo for Greg Coman Photography"
+              className="h-8"
+              loading="lazy"
+            />
+          </Link>
+          }
 
           <div className="flex items-center gap-8">
             {/* Navigation Links */}

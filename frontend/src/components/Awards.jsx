@@ -28,6 +28,7 @@ export default function Awards() {
         {awards.map((a, i) => (
           a.images?.[0] && 
           <img
+            key={i}
             loading='lazy'
             src={urlFor(a.images?.[0])?.url()}
             alt={a.name || `Award ${i}`}
