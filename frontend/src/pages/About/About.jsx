@@ -65,7 +65,7 @@ function Story({name, about, imagesMain, images}){
           <MyCarousel imagesRaw={images}/>
         </div>}
         {about?.description && 
-        <div className='max-w-full prose prose-xl prose-black leading-normal'>
+        <div className='max-w-full prose prose-xl prose-color-(--color-black) leading-normal'>
           <PortableText value={about.description} />
         </div>}
       </div>
@@ -150,7 +150,7 @@ function About2({ about2 }){
           />
         </div>}
         {description &&
-        <div className=' max-w-full  prose prose-xl prose-black leading-normal'>
+        <div className=' max-w-full  prose prose-xl prose-color-(--color-black) leading-normal'>
           <PortableText value={description} />
         </div>}
       </div>
@@ -175,7 +175,7 @@ function About3({about3}){
           {title}
         </h2>}
         {description && 
-        <div className='max-w-full  prose prose-xl prose-black leading-normal'>
+        <div className='max-w-full  prose prose-xl prose-color-(--color-black) leading-normal'>
           <PortableText value={description} />
         </div>}
       </div>

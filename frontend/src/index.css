@@ -78,15 +78,18 @@
   /*porting hashir pages*/
   --color-brandTeal-old: #03746d;
   --color-brandBlack-old: #4c4c4c;
+
+  --color-links: var(--color-brandTeal-700);
+  --color-links-hover: var(--color-brandTeal-500); 
 }
 
 @layer base {
   a {
     font-weight: 500;
-    color: var(--color-brandTeal-700);
+    color: var(--color-links);
   }
   a:hover {
-    color: var(--color-brandTeal-500);
+    color: var(--color-links-hover);
   }
   
   button {
@@ -193,16 +196,16 @@
 }
 
 /*below is no longer needed, read utility calss below*/
-.prose-black {
+/* .prose-black {
   --tw-prose-body: oklch(0.145 0 0);
   --tw-prose-headings: oklch(0.145 0 0);
   --tw-prose-lead: oklch(0.145 0 0);
   --tw-prose-links: oklch(0.145 0 0);
   --tw-prose-bold: oklch(0.145 0 0);
   --tw-prose-counters: oklch(0.145 0 0);
-  --tw-prose-bullets: oklch(0.145 0 0); /* Ensures list markers are black */
+  --tw-prose-bullets: oklch(0.145 0 0);
   --tw-prose-quotes: oklch(0.145 0 0);
-}
+} */
 
 /*New, below is how to color each typography color dynamically :)
 Very nice find so we dont have to copy and paste above code everytime we want a new color*/

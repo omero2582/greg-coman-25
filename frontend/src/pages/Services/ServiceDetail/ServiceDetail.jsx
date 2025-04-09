@@ -107,7 +107,7 @@ function About({descriptionRaw, descriptionImageRaw}){
     <div className='px-2 my-18 max-w-[880px] justify-self-center justify-items-center gap-y-6 gap-x-14 grid sm:grid-cols-[auto_max-content]'>
       {descriptionRaw && 
       <div className=' self-center text-[1.25rem] leading-[1.55]'>
-        <div className='!space-y-6 prose prose-xl prose-black leading-normal'>
+        <div className='!space-y-6 prose prose-xl prose-color-(--color-black) leading-normal'>
           <PortableText value={descriptionRaw} />
         </div>
       </div>}
@@ -152,21 +152,26 @@ function Packages({packagesRaw}){
       <div className='text-[1.15rem] '>
         <div className='mt-[10px] mb-[8px] leading-[1.3]'>
           {selectedPackage?.name && 
-          <h2 className='font-bold text-[1.5rem]'>
+          <h2 className='font-[500] text-[1.4rem]'>
             {selectedPackage.name}
           </h2>}
           
           {selectedPackage?.caption && 
-          <h3 className='text-[1.15rem] italic'>{selectedPackage.caption}</h3>}
+          <p className='text-[1.15rem] italic font-[500]'>
+            {selectedPackage.caption}
+          </p>}
           <div className='text-[1.13rem] grid grid-flow-col justify-start items-center'>
-            {selectedPackage?.price && `${selectedPackage.price} | `}
-            {selectedPackage?.duration && `${selectedPackage.duration} | `}
-            {/* <a href={`http://maps.google.com/?q=${selectedPackage.location.label}`}> */}
-            {/* <a target='_blank' href={selectedPackage.location.url}>
-              {selectedPackage.location.label}
-            </a> */}
+            {selectedPackage?.price &&
+            <span className='text-[1.3rem] font-[700] text-brandBlue-800'>{selectedPackage.price}</span>}
+            {selectedPackage?.duration &&
+            <p>
+              <span className='px-[3px]'>{`|`}</span>
+              <span>{selectedPackage.duration}</span>
+            </p>}
             {selectedPackage?.location &&
-            <div className='ml-[2px] -mt-[1px] prose prose-a:no-underline prose-black prose-lg leading-1'>
+            <>
+            <span className='px-[3px]'>{`|`}</span>
+            <div className='ml-[2px] prose prose-a:no-underline prose-color-(--color-black) prose-lg leading-[1.5]'>
               <PortableText 
                 value={selectedPackage.location}
                 components={{
@@ -176,7 +181,7 @@ function Packages({packagesRaw}){
                       href={value?.href || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-(--color-brandTeal-700) hover:text-(--color-brandTeal-500)"
+                      className="text-(--color-links) hover:text-(--color-links-hover)"
                     >
                       {children}
                     </a>
@@ -184,11 +189,12 @@ function Packages({packagesRaw}){
                 }
                 }}
               />
-            </div>}
+            </div>
+            </>}
           </div>
         </div>
         {selectedPackage?.description && 
-        <div className='max-w-full prose prose-lg prose-ul:leading-[1.55] prose-li:my-[0px]  prose-black prose-strong:font-bold prose-p:mb-0 prose-ul:mt-0'>
+        <div className='mb-[24px] max-w-full prose prose-lg prose-ul:leading-[1.55] prose-li:my-[0px]  prose-color-(--color-black) prose-p:mb-0 prose-ul:mt-0'>
           <PortableText 
             value={selectedPackage.description} 
             components={{
@@ -205,6 +211,14 @@ function Packages({packagesRaw}){
             }}
           />
         </div>}
+        {selectedPackage?.featuresTitle &&
+        <div className='max-w-full prose prose-lg prose-ul:leading-[1.55] prose-li:my-[0px]  prose-color-(--color-black) prose-p:mb-0 prose-ul:mt-0'>
+        <PortableText value={selectedPackage.featuresTitle} />
+      </div>}
+        {selectedPackage?.features &&
+        <div className='max-w-full prose prose-lg prose-ul:leading-[1.55] prose-li:my-[0px]  prose-color-(--color-black) prose-p:mb-0 prose-ul:mt-0'>
+        <PortableText value={selectedPackage.features} />
+      </div>}
       </div>
     </div>
   )

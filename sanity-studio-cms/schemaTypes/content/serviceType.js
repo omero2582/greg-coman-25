@@ -9,14 +9,14 @@ export default {
     {
       title: 'Visible',
       name: 'isVisible',
-      description: 'Set to visible when you want this service to be accessible accross all pages',
+      description: 'Set to visible when you want this service to be accessible at its URL. To remove it from other pages, check those pages documents in Sanity on the left tab. For example "Global" contains Navbar + Footer. Services Page and Home Page also contain some. You would have to go into those documents and remove those service references too',
       type: 'boolean'
     },
     { name: 'name', title: 'Name', type: 'string', },
     {
       name: 'slug',
       type: 'slug',
-      description: 'URL string',
+      description: 'URL string to access this page. For example if "abc", then it will be acccessible at "/services/abc"',
       options: {source: 'name'},
       validation: (rule) => rule
         .required()
@@ -24,7 +24,9 @@ export default {
       hidden: ({document}) => !document?.name,
     },
 
-    { name: 'caption', title: 'Caption', type: 'string', },
+    { name: 'caption', title: 'Caption', type: 'string', description: "Shown in this Service's specific Page, under its name"},
+    { name: 'captionOverview', title: 'Caption in /Services', type: 'string', description: "Shown in /services, as the description when you click into a service" },
+    
     { 
       name: 'mainImage',
       title: 'Main Image',
@@ -95,7 +97,7 @@ export default {
         type: 'object',
         fields: [
           { name: 'name', title: 'Name', type: 'string' },
-          { name: 'caption', title: 'caption', type: 'string' },
+          { name: 'caption', title: 'Caption', type: 'string' },
           { name: 'price', title: 'Price', type: 'string' },
           { name: 'duration', title: 'Duration', type: 'string' },
           { name: 'location', title: 'Location', type: 'array',
@@ -106,6 +108,22 @@ export default {
           { 
             name: 'description',
             title: 'Descrption',
+            type: 'array',
+            of: [
+              { type: 'block' }] 
+          },
+          { 
+            name: 'featuresTitle',
+            title: 'Features Title',
+            description: 'Title ONLY. For the features list, use the field below called "Features"',
+            type: 'array',
+            of: [
+              { type: 'block' }] 
+          },
+          { 
+            name: 'features',
+            title: 'Features',
+            description: 'List of Features',
             type: 'array',
             of: [
               { type: 'block' }] 
