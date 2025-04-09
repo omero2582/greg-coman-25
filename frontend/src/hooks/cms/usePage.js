@@ -31,3 +31,8 @@ export const usePageHome = (options = {}) => usePage('homePage', `{
     ...,
     testimonials[]->
   }`, options);
+
+  export const usePageServices = (options = {}) => usePage('servicesPage', `{
+    ...,
+    services[]->
+  }`, options);

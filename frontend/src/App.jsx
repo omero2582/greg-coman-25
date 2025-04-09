@@ -6,7 +6,7 @@ import Navbar from "./layout/Navbar";
 import Footer from "./layout/Footer";
 import Headshots from './pages/Services/old-unused/Headshots/Headshots';
 import Testimonials from './pages/Testimonials/Testimonials';
-import Pricing from './pages/Pricing/Pricing';
+// import Pricing from './pages/Pricing/Pricing';
 import ServiceDetail from './pages/Services/ServiceDetail/ServiceDetail';
 import Services from './pages/Services/Services';
 import About from './pages/About/About';
@@ -37,14 +37,14 @@ export default function App() {
         <Route path="/faq" element={<FAQ/>} />
         <Route path="/testimonials" element={<Testimonials/>} />
         <Route path="/reviews" element={<Testimonials/>} />
-        <Route path="/pricing" element={<Pricing/>}/>
         <Route path="/services" element={<Services/>} />
         <Route path="/finearts" element={<FineArts/>} />
         {/* <Route path="/services/myCustomLayoutForThisService" element={<ServiceCustomDifferentLayout/>} /> */}
         <Route path="/services/:serviceSlug" element={<ServiceDetail/>} />
         
         {/*below to be removed*/}
-        <Route path="/headshots" element={<Headshots />} />
+        {/* <Route path="/pricing" element={<Pricing/>}/> */}
+        {/* <Route path="/headshots" element={<Headshots />} /> */}
       </Routes>
       <Footer />
       </div>

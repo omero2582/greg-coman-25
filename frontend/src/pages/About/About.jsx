@@ -109,7 +109,6 @@ function MyCarousel({imagesRaw}){
 }
 
 function Awards({awards}) {
-  console.log(awards)
   // const { name, images, awardDate, placement, presenter } = awards[0];
   return (
     <div className='my-6 flex flex-wrap justify-center'>

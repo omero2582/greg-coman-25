@@ -8,7 +8,6 @@ import aboutPageType from "./pages/aboutPageType";
 import blogsPageType from "./pages/blogsPageType";
 import contactPageType from "./pages/contactPageType";
 import homePageType from "./pages/homePageType";
-import pricingPageType from "./pages/pricingPageType";
 import servicesPageType from "./pages/servicesPageType";
 import testimonialsPageType from "./pages/testimonialsPageType";
 
@@ -39,7 +38,6 @@ export const schemaTypes = [
   aboutPageType,
   contactPageType,
   servicesPageType,
-  pricingPageType,
   testimonialsPageType,
 
   blogsPageType,

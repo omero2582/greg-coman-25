@@ -234,10 +234,11 @@ function Services ({data = {}}) {
 
     {services &&
     <div className="flex flex-wrap justify-center gap-6 mt-8">
-      {services.slice(0, 4).map(s => (
+      {services.slice(0, 4).map((s, i) => (
         <div 
           className="group flex flex-col items-center space-y-2 cursor-pointer ease-in-out transition-all duration-200"
           onClick={() => navigate(`services/${s?.slug?.current}`)}
+          key= {s?.name || i}
         >
           {s?.mainImage &&
           <img
@@ -267,9 +268,10 @@ function Services ({data = {}}) {
         </div>}
       </div>
       <div className="flex flex-wrap justify-center gap-3">
-        {services.slice(4, 7).map(s => (
+        {services.slice(4, 7).map((s, i) => (
           s?.name && 
           <Link 
+            key={s?.name || i}
             to={`services/${s?.slug?.current}`}
             className="uppercase font-normal text-black flex items-center px-6 py-1 rounded-full bg-white border border-[#1E376C] hover:cursor-pointer hover:bg-[#e7e1e1] transition-all duration-200">
             {s.name}
@@ -300,12 +302,13 @@ function Gallery ({data = []}) {
             }),
           ]}
           className="w-full max-w-7xl px-4"
+          key={i}
         >
           <CarouselContent className="flex gap-4">
             {half.map((photo, index) => (
               <CarouselItem
-                key={index}
                 className="flex-shrink-0 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4 flex justify-center"
+                key={index}
               >
                 <img
                   loading="lazy"

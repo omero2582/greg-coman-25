@@ -15,6 +15,8 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { urlFor } from '@/sanity-cms/sanityClient';
 import NavBarSizeAccountFor from '@/components/NavBarSizeAccountFor';
 import { Spinner } from '@/components/ui/Spinner';
+import Booking from '@/components/Booking';
+import Steps from '@/components/Steps';
 
 export default function ServiceDetail() {
   const serviceSlug = validator.escape(useParams().serviceSlug);
@@ -56,6 +58,9 @@ export default function ServiceDetail() {
         <MyCarousel imagesRaw={images}/>
         <About descriptionRaw={description} descriptionImageRaw={descriptionImage}/>
         <Packages packagesRaw={packages}/>
+        <div className='mt-12'></div>
+        <Steps/>
+        <Booking/>
       </div>
     </>
   )
@@ -104,7 +109,8 @@ function MyCarousel({imagesRaw}){
 function About({descriptionRaw, descriptionImageRaw}){
 
   return (
-    <div className='px-2 my-18 max-w-[880px] justify-self-center justify-items-center gap-y-6 gap-x-14 grid sm:grid-cols-[auto_max-content]'>
+    (descriptionRaw || descriptionImageRaw) &&
+    <div className='px-2 mt-18 max-w-[880px] justify-self-center justify-items-center gap-y-6 gap-x-14 grid sm:grid-cols-[auto_max-content]'>
       {descriptionRaw && 
       <div className=' self-center text-[1.25rem] leading-[1.55]'>
         <div className='!space-y-6 prose prose-xl prose-color-(--color-black) leading-normal'>
@@ -132,9 +138,9 @@ function Packages({packagesRaw}){
   const selectedPackage = packagesRaw.find(p => p.name === selectedTab)
 
   return (
-    <div className='px-2 max-w-[880px] w-full justify-self-center '>
+    <div className='mt-18 px-2 max-w-[880px] w-full justify-self-center '>
       <div>
-        {packagesRaw.map(p => (
+        {packagesRaw?.map(p => (
         p?.name && 
         <button 
           key={p.name}
